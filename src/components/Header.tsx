@@ -57,17 +57,23 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-cream/95 backdrop-blur-md border-b border-burgundy/5 px-6 py-4 md:px-12 flex items-center justify-between">
-        {/* Mobile menu trigger */}
-        <button 
-          onClick={() => setMobileMenuOpen(true)}
-          className="md:hidden text-burgundy hover:opacity-80 transition"
-          aria-label="Toggle mobile menu"
-          id="btn-mobile-menu"
-        >
-          <Menu className="w-6 h-6" />
-        </button>
+      {/* COMPACT MOBILE TOP BAR: logo aligned to left, no top nav */}
+      <header className="md:hidden sticky top-0 z-40 bg-cream/95 backdrop-blur-md border-b border-burgundy/5 px-4 py-3 flex items-center justify-start">
+        <Link to="/" className="flex items-center gap-3 group ml-0" id="lnk-logo-mobile">
+          <img 
+            src="https://i.ibb.co/G4BYJN9h/Gemini-Generated-Image-j1yadkj1yadkj1ya-removebg-preview.png" 
+            alt="Fab Ruby Logo" 
+            className="w-9 h-9 object-contain transition duration-300 group-hover:scale-105"
+            referrerPolicy="no-referrer"
+          />
+          <div className="flex flex-col leading-none">
+            <span className="font-logo text-sm tracking-[0.05em] font-bold text-brightred uppercase">Fab Ruby</span>
+          </div>
+        </Link>
+      </header>
 
+      {/* FULL HEADER for md+ screens */}
+      <header className="hidden md:flex sticky top-0 z-40 bg-cream/95 backdrop-blur-md border-b border-burgundy/5 px-6 py-4 md:px-12 flex items-center justify-between">
         {/* LOGO */}
         <Link to="/" className="flex items-center gap-3 group" id="lnk-logo">
           <img 
