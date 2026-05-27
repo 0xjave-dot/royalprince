@@ -1,0 +1,6 @@
+{
+  "name": "Fab Ruby Clothiers",
+  "description": "Premium women's fashion boutique in Lagos featuring AI Stylist recommendations and Virtual Try-On.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

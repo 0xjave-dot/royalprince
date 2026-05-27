@@ -1,0 +1,41 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Default catch-all denies access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Products collection: everyone can read, write is closed
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if false; // Only manageable via Admin SDK or system
+    }
+
+    // Users public / private split collection
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    // Orders checkout tracking
+    match /orders/{orderId} {
+      allow create: if isSignedIn();
+      allow read: if isSignedIn() && (resource.data.uid == request.auth.uid || resource.data.customerEmail == request.auth.token.email);
+      allow update, delete: if false;
+    }
+  }
+}
