@@ -58,7 +58,7 @@ export default function Header() {
   return (
     <>
       {/* COMPACT MOBILE TOP BAR: logo aligned to left, no top nav */}
-      <header className="md:hidden sticky top-0 z-40 bg-cream/95 backdrop-blur-md border-b border-burgundy/5 px-4 py-3 flex items-center justify-start">
+      <header className="md:hidden sticky top-0 z-40 bg-cream/95 backdrop-blur-md border-b border-burgundy/5 px-4 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group ml-0" id="lnk-logo-mobile">
           <img 
             src="https://i.ibb.co/G4BYJN9h/Gemini-Generated-Image-j1yadkj1yadkj1ya-removebg-preview.png" 
@@ -70,6 +70,55 @@ export default function Header() {
             <span className="font-logo text-sm tracking-[0.05em] font-bold text-brightred uppercase">Fab Ruby</span>
           </div>
         </Link>
+
+        {/* Action Icons (mobile) - keep on the right, smaller */}
+        <div className="flex items-center gap-3">
+          <button 
+            onClick={() => setSearchOpen(true)}
+            id="btn-search-trigger-mobile"
+            className="text-nearblack hover:text-burgundy transition cursor-pointer p-1"
+            aria-label="Search items"
+          >
+            <Search className="w-5 h-5 pointer-events-none" />
+          </button>
+
+          <Link 
+            to="/wishlist" 
+            id="lnk-wishlist-mobile"
+            className="text-nearblack hover:text-burgundy transition relative p-1"
+            aria-label="Saved products"
+          >
+            <Heart className="w-5 h-5" />
+            {wishlist.length > 0 && (
+              <span className="absolute -top-1.5 -right-1.5 bg-gold text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                {wishlist.length}
+              </span>
+            )}
+          </Link>
+
+          <Link 
+            to="/account" 
+            id="lnk-account-mobile"
+            className="text-nearblack hover:text-burgundy transition p-1"
+            aria-label="User Account"
+          >
+            <User className="w-5 h-5" />
+          </Link>
+
+          <button 
+            onClick={() => setCartOpen(true)}
+            id="btn-cart-trigger-mobile"
+            className="text-nearblack hover:text-burgundy transition relative cursor-pointer p-1"
+            aria-label="Open Shopping Bag"
+          >
+            <ShoppingBag className="w-5 h-5 pointer-events-none" />
+            {cartCount > 0 && (
+              <span className="absolute -top-1.5 -right-1.5 bg-burgundy text-white text-[9px] font-bold w-4.5 h-4.5 rounded-full flex items-center justify-center">
+                {cartCount}
+              </span>
+            )}
+          </button>
+        </div>
       </header>
 
       {/* FULL HEADER for md+ screens */}
