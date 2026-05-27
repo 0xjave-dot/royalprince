@@ -58,16 +58,17 @@ export default function Header() {
   return (
     <>
       {/* COMPACT MOBILE TOP BAR: logo aligned to left, no top nav */}
-      <header className="md:hidden sticky top-0 z-40 bg-cream/95 backdrop-blur-md border-b border-burgundy/5 px-4 py-3 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3 group ml-0" id="lnk-logo-mobile">
+      <header className="md:hidden sticky top-0 z-40 bg-cream/95 backdrop-blur-md border-b border-burgundy/5 px-3 py-2 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-2 group ml-0" id="lnk-logo-mobile">
           <img 
             src="https://i.ibb.co/G4BYJN9h/Gemini-Generated-Image-j1yadkj1yadkj1ya-removebg-preview.png" 
             alt="Fab Ruby Logo" 
-            className="w-9 h-9 object-contain transition duration-300 group-hover:scale-105"
+            className="w-8 h-8 object-contain transition duration-200 group-hover:scale-105"
             referrerPolicy="no-referrer"
           />
-          <div className="flex flex-col leading-none">
-            <span className="font-logo text-sm tracking-[0.05em] font-bold text-brightred uppercase">Fab Ruby</span>
+          <div className="flex flex-col leading-none -mt-0.5">
+            <span className="font-logo text-sm tracking-[0.03em] font-bold text-brightred uppercase leading-none">Fab</span>
+            <span className="font-logo text-xs tracking-[0.03em] font-semibold text-brightred uppercase leading-none -mt-0.5">Ruby</span>
           </div>
         </Link>
 
