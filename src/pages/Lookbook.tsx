@@ -25,7 +25,7 @@ const LOOKBOOK_SETS: LookbookItem[] = [
     id: "look-01",
     name: "Lagos Boardroom Majesty",
     slogan: "Look 01 / Vol. 4",
-    image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=1200&auto=format&fit=crop",
+    image: "https://i.ibb.co/hRRDm7t4/Gemini-Generated-Image-bumeiqbumeiqbume.png",
     description: "The complete visual embodiment of tailored strength. Deep red tones command boardroom arrays, styled to transition seamlessly into Lekki cocktail assemblies.",
     hotspots: [
       {

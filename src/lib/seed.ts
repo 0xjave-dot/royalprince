@@ -97,7 +97,7 @@ export const STATIC_PRODUCTS: Product[] = [
     description: "Command respect in our heritage burgundy tailored double-breasted jacket and high-rise flared trousers.",
     sizes: ["S", "M", "L"],
     colors: ["Burgundy Noir"],
-    mainImage: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&auto=format&fit=crop",
+    mainImage: "https://i.ibb.co/hRRDm7t4/Gemini-Generated-Image-bumeiqbumeiqbume.png",
     hoverImage: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=800&auto=format&fit=crop",
     category: "Two-pieces",
     tags: ["Trending"]

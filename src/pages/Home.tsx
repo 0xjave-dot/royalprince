@@ -119,10 +119,10 @@ export default function Home() {
   const trendingProduct = STATIC_PRODUCTS.filter(p => p.tags.includes('Trending')).slice(0, 4);
 
   const categories = [
-    { name: 'Dresses', count: 4, cover: 'https://i.ibb.co/xtsvGHF4/v-Fe-CH.jpg' },
-    { name: 'Two-pieces', count: 4, cover: 'https://i.ibb.co/zH71Jx0b/8DTTA.jpg' },
-    { name: 'Bags', count: 2, cover: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&auto=format&fit=crop' },
     { name: 'Shoes', count: 2, cover: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&auto=format&fit=crop' },
+    { name: 'Bags', count: 2, cover: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&auto=format&fit=crop' },
+    { name: 'Two-pieces', count: 4, cover: 'https://i.ibb.co/zH71Jx0b/8DTTA.jpg' },
+    { name: 'Dresses', count: 4, cover: 'https://i.ibb.co/xtsvGHF4/v-Fe-CH.jpg' },
   ];
 
   const handleOpenTryOn = (p: any) => {
@@ -181,17 +181,16 @@ export default function Home() {
           <div className="w-12 h-[2px] bg-gold mt-4" />
         </div>
 
-        {/* Horizontal scrollable categories wrapping right-to-left */}
+        {/* Horizontal scrollable categories starting from the left */}
         <div 
           className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scroll-smooth" 
-          dir="rtl"
           style={{
             scrollbarWidth: 'thin',
             scrollbarColor: '#C9A84C rgba(0,0,0,0.05)'
           }}
         >
           {categories.map((c) => (
-            <div key={c.name} className="flex-none w-[270px] sm:w-[310px] snap-center" dir="ltr">
+            <div key={c.name} className="flex-none w-[270px] sm:w-[310px] snap-center">
               <CategoryTiltCard category={c} />
             </div>
           ))}
@@ -221,9 +220,7 @@ export default function Home() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {trendingProduct.map((product) => (
-            <React.Fragment key={product.id}>
-              <ProductCard product={product} />
-            </React.Fragment>
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </section>
@@ -260,15 +257,12 @@ export default function Home() {
 
           <div className="relative aspect-[4/3] lg:aspect-auto min-h-[300px]">
             <img 
-              src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&auto=format&fit=crop" 
+              src="https://i.ibb.co/hRRDm7t4/Gemini-Generated-Image-bumeiqbumeiqbume.png" 
               alt="Stylish young Lagos woman representing Ruby Stylist Agent"
               className="absolute inset-0 w-full h-full object-cover brightness-95"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-burgundy via-transparent p-6 flex flex-col justify-end text-white max-w-xs ml-4">
-              <p className="font-serif italic text-gold text-sm">"I style you with standard Lagos attitude & sharp boutique coordinates. No guesswork."</p>
-              <p className="font-sans uppercase text-[9px] tracking-widest font-black text-white/50 mt-1">― ruby, a.i stylist</p>
-            </div>
+
           </div>
         </div>
       </section>

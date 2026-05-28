@@ -43,6 +43,8 @@ const CAROUSEL_IMAGES = [
 export default function HeroCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const length = CAROUSEL_IMAGES.length;
@@ -53,6 +55,32 @@ export default function HeroCarousel() {
 
   const prevSlide = () => {
     setActiveIndex((prev) => (prev - 1 + length) % length);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+
+    if (diff > 50) {
+      nextSlide();
+    } else if (diff < -50) {
+      prevSlide();
+    }
+    setTouchStartX(null);
   };
 
   // Autoplay function
@@ -83,23 +111,36 @@ export default function HeroCarousel() {
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Carousel Core Area */}
-      <div className="relative w-full h-[360px] md:h-[480px] flex items-center justify-center overflow-visible">
+      <div 
+        className="relative w-full h-[380px] sm:h-[420px] md:h-[480px] flex items-center justify-center overflow-hidden sm:overflow-visible"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         {CAROUSEL_IMAGES.map((img, idx) => {
           const diff = getDiff(idx);
 
           // We only render the active center tile (-1, 0, 1) or hide others
           if (diff === null) return null;
 
+          // Compute responsive scale, opacity and offsets
+          const cardScale = diff === 0 ? 1 : (isMobile ? 0.76 : 0.82);
+          const cardOpacity = diff === 0 ? 1 : (isMobile ? 0.32 : 0.45);
+          const cardX = diff === 0 ? '0%' : (diff === 1 ? (isMobile ? '78%' : '44%') : (isMobile ? '-78%' : '-44%'));
+
           return (
             <motion.div
               key={img.id}
-              className="absolute w-[60%] sm:w-[50%] md:w-[45%] lg:w-[48%] xl:w-[45%] h-[90%] rounded-xl overflow-hidden cursor-pointer"
+              className={`absolute h-[92%] rounded-xl overflow-hidden cursor-pointer ${
+                isMobile 
+                  ? "w-[80%]" 
+                  : "w-[50%] md:w-[45%] lg:w-[48%] xl:w-[45%]"
+              }`}
               initial={{ scale: 0.7, opacity: 0 }}
               animate={{
-                scale: diff === 0 ? 1 : 0.82,
-                opacity: diff === 0 ? 1 : 0.45,
+                scale: cardScale,
+                opacity: cardOpacity,
                 zIndex: diff === 0 ? 10 : 1,
-                x: diff === 0 ? '0%' : diff === 1 ? '42%' : '-42%',
+                x: cardX,
                 filter: diff === 0 ? 'brightness(100%)' : 'brightness(70%) blur(1px)',
                 boxShadow: diff === 0 
                   ? '0 25px 50px -12px rgba(107,31,42,0.3), 0 8px 16px -8px rgba(0,0,0,0.15)'
@@ -122,7 +163,7 @@ export default function HeroCarousel() {
               <img
                 src={img.url}
                 alt={img.alt}
-                className="w-full h-full object-cover select-none"
+                className="w-full h-full object-cover select-none object-[center_15%]"
                 referrerPolicy="no-referrer"
               />
             </motion.div>

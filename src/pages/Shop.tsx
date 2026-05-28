@@ -235,9 +235,7 @@ export default function Shop() {
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
               {filteredProducts.map((p) => (
-                <React.Fragment key={p.id}>
-                  <ProductCard product={p} />
-                </React.Fragment>
+                <ProductCard key={p.id} product={p} />
               ))}
             </div>
           )}
