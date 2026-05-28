@@ -20,12 +20,12 @@ interface Outfit {
 const OUTFITS_DATA: Outfit[] = [
   {
     id: 'outfit-power-look',
-    title: 'The Power Look',
+    title: '',
     image: 'https://i.ibb.co/ZpT65h1X/Untitled-design-8.png',
     hotspots: [
       {
-        x: '45%',
-        y: '20%',
+        x: '42%',
+        y: '32%',
         product: {
           id: 'fit-cream-blazer',
           name: 'Oversized Cream Blazer',
@@ -40,8 +40,8 @@ const OUTFITS_DATA: Outfit[] = [
         }
       },
       {
-        x: '50%',
-        y: '55%',
+        x: '52%',
+        y: '65%',
         product: {
           id: 'fit-black-linen-trouser',
           name: 'Black Linen two piece Trouser',
@@ -56,8 +56,8 @@ const OUTFITS_DATA: Outfit[] = [
         }
       },
       {
-        x: '30%',
-        y: '75%',
+        x: '62%',
+        y: '92%',
         product: {
           id: 'fit-black-pointed-heels',
           name: 'Black Pointed Heels',
@@ -75,7 +75,7 @@ const OUTFITS_DATA: Outfit[] = [
   },
   {
     id: 'outfit-evening-look',
-    title: 'The Evening Look',
+    title: '',
     image: 'https://i.ibb.co/PZ7mtQqL/Untitled-design-9.png',
     hotspots: [
       {
@@ -130,7 +130,7 @@ const OUTFITS_DATA: Outfit[] = [
   },
   {
     id: 'outfit-weekend-chic',
-    title: 'The Weekend Chic',
+    title: '',
     image: 'https://i.ibb.co/S7PwrxhQ/Untitled-design-10.png ',
     hotspots: [
       {
@@ -300,12 +300,12 @@ export default function ShopTheFit() {
         
         {/* Module Header */}
         <div className="text-center mb-12 flex flex-col items-center">
-          <span className="font-mono text-xs font-black tracking-[0.2em] text-burgundy uppercase mb-2">CURATED STYLING STUDIO</span>
+          <span className="font-mono text-xs font-black tracking-[0.2em] text-burgundy uppercase mb-2"></span>
           <h2 className="font-serif text-3xl md:text-5xl font-light text-nearblack tracking-wide uppercase leading-tight">
             Shop the Fit
           </h2>
           <p className="font-sans text-xs sm:text-sm text-nearblack/60 font-semibold tracking-wide mt-2 uppercase">
-            Tap any piece to add it to your cart
+            
           </p>
           <div className="w-12 h-[2px] bg-gold mt-4" />
         </div>
