@@ -28,15 +28,17 @@ function AppContent() {
       
       <main className="flex-1">
         <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<PageTransitionWrapper><Home /></PageTransitionWrapper>} />
-            <Route path="/shop" element={<PageTransitionWrapper><Shop /></PageTransitionWrapper>} />
-            <Route path="/wishlist" element={<PageTransitionWrapper><Wishlist /></PageTransitionWrapper>} />
-            <Route path="/account" element={<PageTransitionWrapper><Account /></PageTransitionWrapper>} />
-            <Route path="/order-confirmation" element={<PageTransitionWrapper><OrderConfirmation /></PageTransitionWrapper>} />
-            <Route path="/lookbook" element={<PageTransitionWrapper><Lookbook /></PageTransitionWrapper>} />
-            <Route path="/stylist" element={<PageTransitionWrapper><Stylist /></PageTransitionWrapper>} />
-          </Routes>
+          <React.Fragment key={location.pathname}>
+            <Routes location={location}>
+              <Route path="/" element={<PageTransitionWrapper><Home /></PageTransitionWrapper>} />
+              <Route path="/shop" element={<PageTransitionWrapper><Shop /></PageTransitionWrapper>} />
+              <Route path="/wishlist" element={<PageTransitionWrapper><Wishlist /></PageTransitionWrapper>} />
+              <Route path="/account" element={<PageTransitionWrapper><Account /></PageTransitionWrapper>} />
+              <Route path="/order-confirmation" element={<PageTransitionWrapper><OrderConfirmation /></PageTransitionWrapper>} />
+              <Route path="/lookbook" element={<PageTransitionWrapper><Lookbook /></PageTransitionWrapper>} />
+              <Route path="/stylist" element={<PageTransitionWrapper><Stylist /></PageTransitionWrapper>} />
+            </Routes>
+          </React.Fragment>
         </AnimatePresence>
       </main>
       

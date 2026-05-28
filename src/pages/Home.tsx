@@ -3,17 +3,117 @@ import { useAppState } from '../lib/StateContext';
 import { STATIC_PRODUCTS } from '../lib/seed';
 import ProductCard from '../components/ProductCard';
 import VirtualTryOnModal from '../components/VirtualTryOnModal';
-import { ArrowRight, MessageSquare, Heart } from 'lucide-react';
-import { motion } from 'motion/react';
+import { ArrowRight, MessageSquare, Heart, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import CategoryTiltCard from '../components/CategoryTiltCard';
 import HeroCarousel from '../components/HeroCarousel';
 import ShopTheFit from '../components/ShopTheFit';
 
+const GALLERY_ITEMS = [
+  {
+    id: "gallery-boutique-1",
+    title: "Flagship Walk-In",
+    tag: "Boutique Space",
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&auto=format&fit=crop",
+    desc: "Our Gbagada sanctuary where luxury meets personalized style guidance. Stop by today for standard client fittings.",
+    isReel: false,
+    bentoClass: "md:col-span-2 md:row-span-1 md:min-h-[300px]"
+  },
+  {
+    id: "gallery-reel-1",
+    title: "Styling Camel Sets",
+    tag: "Instagram Reel",
+    image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=1200&auto=format&fit=crop",
+    desc: "\"One suit, three distinct ways.\" 15k+ luxury views. Our signature aesthetic matched for business, brunch, and social events.",
+    isReel: true,
+    bentoClass: "md:col-span-1 md:row-span-2 md:min-h-[400px]"
+  },
+  {
+    id: "gallery-client-1",
+    title: "Kemi in Scarlet Wrap",
+    tag: "Client Diary",
+    image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=1200&auto=format&fit=crop",
+    desc: "Looking absolutely radiant for a luxury dinner setup in Victoria Island. Pure linen elegance commanding the room!",
+    isReel: false,
+    bentoClass: "md:col-span-1 md:row-span-1 md:min-h-[240px]"
+  },
+  {
+    id: "gallery-boutique-2",
+    title: "Golden Hangers",
+    tag: "The Collections",
+    image: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=1200&auto=format&fit=crop",
+    desc: "Every thread is chosen painstakingly. Feel the pure premium texture of heavy linen, luxury crepes, and breathable knits.",
+    isReel: false,
+    bentoClass: "md:col-span-1 md:row-span-1 md:min-h-[240px]"
+  },
+  {
+    id: "gallery-reel-2",
+    title: "Lekki Brunch Aesthetic",
+    tag: "Instagram Reel",
+    image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1200&auto=format&fit=crop",
+    desc: "Vibrant co-ord transitions for high-fashion sunny Saturdays. The ultimate statement that matches your positive aura.",
+    isReel: true,
+    bentoClass: "md:col-span-1 md:row-span-1 md:min-h-[240px]"
+  },
+  {
+    id: "gallery-client-2",
+    title: "Tola in Emerald Linen",
+    tag: "Client Diary",
+    image: "https://images.unsplash.com/photo-1618244972963-dbee1a7edc95?w=1200&auto=format&fit=crop",
+    desc: "Commanding the executive boardroom dynamic with absolute ease. Our tailored structures bring unmatched elegance.",
+    isReel: false,
+    bentoClass: "md:col-span-2 md:row-span-1 md:min-h-[300px]"
+  }
+];
+
 export default function Home() {
   const { wishlist } = useAppState();
   const [tryOnOpen, setTryOnOpen] = useState(false);
   const [tryOnProduct, setTryOnProduct] = useState<any>(STATIC_PRODUCTS[0]);
+  const [activeGalleryIndex, setActiveGalleryIndex] = useState<number | null>(null);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+  const handleNextGallery = () => {
+    setActiveGalleryIndex((prev) => (prev === null ? 0 : (prev + 1) % GALLERY_ITEMS.length));
+  };
+
+  const handlePrevGallery = () => {
+    setActiveGalleryIndex((prev) => (prev === null ? 0 : (prev - 1 + GALLERY_ITEMS.length) % GALLERY_ITEMS.length));
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+
+    if (diff > 50) {
+      handleNextGallery();
+    } else if (diff < -50) {
+      handlePrevGallery();
+    }
+    setTouchStartX(null);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (activeGalleryIndex !== null) {
+        if (e.key === 'ArrowRight') {
+          handleNextGallery();
+        } else if (e.key === 'ArrowLeft') {
+          handlePrevGallery();
+        } else if (e.key === 'Escape') {
+          setActiveGalleryIndex(null);
+        }
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activeGalleryIndex]);
  
   // Filter trending arrivals
   const trendingProduct = STATIC_PRODUCTS.filter(p => p.tags.includes('Trending')).slice(0, 4);
@@ -107,22 +207,23 @@ export default function Home() {
       <section className="py-24 px-6 md:px-16 max-w-7xl mx-auto w-full">
         <div className="flex flex-col md:flex-row items-baseline justify-between mb-16 gap-4">
           <div>
-            <span className="font-mono text-xs font-black tracking-widest text-burgundy uppercase mb-2 block">HIGH IN DEMAND</span>
             <h2 className="font-serif text-3xl md:text-5xl tracking-tight text-nearblack font-light uppercase">
-              Trending Silhouettes
+              POPULAR
             </h2>
           </div>
           <Link 
             to="/shop" 
             className="font-sans text-xs uppercase font-black tracking-widest text-burgundy hover:text-gold transition flex items-center gap-1 border-b border-burgundy/15 pb-1 self-start"
           >
-            DISCOVER ALL ARCHIVES <ArrowRight className="w-3.5 h-3.5" />
+            Shop now <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {trendingProduct.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <React.Fragment key={product.id}>
+              <ProductCard product={product} />
+            </React.Fragment>
           ))}
         </div>
       </section>
@@ -135,14 +236,14 @@ export default function Home() {
           
           <div className="p-10 md:p-16 flex flex-col justify-center items-start relative z-10">
             <span className="bg-gold text-burgundy text-[9px] font-sans font-black tracking-widest uppercase px-3 py-1 rounded mb-6 flex items-center gap-1.5 shadow-sm">
-              INTRODUCING RUBY STYLIST AI
+              INTRODUCING RUBY
             </span>
             <h2 className="font-serif text-4xl md:text-6xl font-light tracking-tight mb-6 uppercase leading-none">
-              Doubt what <br />
-              to wear, <span className="italic font-serif text-gold lowercase">babe?</span>
+              Not sure what <br />
+              to wear?
             </h2>
             <p className="text-sm md:text-base text-cream/70 leading-relaxed mb-8 max-w-md">
-              Speak with Ruby, our neural stylist grounded in our boutique's real stock files. Whether it is an Owanbe assembly or a business dinner in Ikoyi, Ruby crafts complete ensembles instantly.
+              Ask Ruby, our AI stylist connected directly to our boutique’s collection. Whether it's a vibrant celebration event. or a business dinner, Ruby will curate your perfect, ready-to-wear look in seconds.
             </p>
             
             {/* Launch Stylist widget trigger */}
@@ -171,6 +272,151 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* SECTION 7: FAB RUBY SOCIALS & CLIENT GALLERY */}
+      <section className="py-24 px-6 md:px-16 bg-cream border-t border-burgundy/5 w-full">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16 flex flex-col items-center">
+            <span className="font-mono text-xs font-black tracking-[0.2em] text-burgundy uppercase mb-2">#FABRUBYBABE</span>
+            <h2 className="font-serif text-3xl md:text-5xl font-light text-nearblack tracking-wide uppercase leading-tight">
+              Boutique & Client Gallery
+            </h2>
+            <p className="font-sans text-xs sm:text-sm text-nearblack/60 font-semibold tracking-wide mt-2 uppercase">
+              Step into our world: walk-in moments, curated reels, and clients commanding rooms
+            </p>
+            <div className="w-12 h-[2px] bg-gold mt-4" />
+          </div>
+
+          {/* Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto">
+            {GALLERY_ITEMS.map((item, index) => (
+              <div 
+                key={item.id}
+                onClick={() => setActiveGalleryIndex(index)}
+                className={`bg-white rounded-2xl overflow-hidden border border-burgundy/5 shadow-md hover:shadow-xl transition duration-300 flex flex-col group cursor-pointer ${item.bentoClass}`}
+              >
+                <div className="relative overflow-hidden aspect-[4/3] md:flex-1 md:min-h-[220px] md:aspect-auto">
+                  <img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                    referrerPolicy="no-referrer"
+                  />
+                  <span className={`absolute top-4 left-4 font-mono text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded shadow-sm ${
+                    item.isReel ? 'bg-red-600 text-white' : item.tag === 'Client Diary' ? 'bg-gold text-burgundy' : 'bg-burgundy text-cream'
+                  }`}>
+                    {item.isReel && "📹 "}{item.tag}
+                  </span>
+
+                  {item.isReel && (
+                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center transition duration-300">
+                      <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center shadow-lg text-burgundy transform scale-95 group-hover:scale-105 transition duration-300">
+                        <svg className="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" stroke="currentColor" strokeWidth="1" />
+                        </svg>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <div className="p-5 flex flex-col justify-between bg-white">
+                  <h3 className="font-serif text-base md:text-lg font-light text-nearblack mb-1 uppercase tracking-wider">{item.title}</h3>
+                  <p className="font-sans text-xs text-nearblack/60 leading-relaxed font-semibold">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* GALLERY DETAIL MODAL WITH TOUCH SWIPE AND ARROW NAVIGATION */}
+      <AnimatePresence>
+        {activeGalleryIndex !== null && (
+          <div 
+            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col justify-between p-4 md:p-8" 
+            id="gallery-modal-root"
+          >
+            {/* Top Navigation Bar */}
+            <div className="flex justify-between items-center w-full text-white py-2 px-1 z-50">
+              <div className="flex flex-col">
+                <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-gold">
+                  {GALLERY_ITEMS[activeGalleryIndex].tag}
+                </span>
+                <span className="font-serif text-lg tracking-wider uppercase font-light">
+                  {GALLERY_ITEMS[activeGalleryIndex].title}
+                </span>
+              </div>
+              <button 
+                onClick={() => setActiveGalleryIndex(null)}
+                className="p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition cursor-pointer"
+                id="btn-close-gallery-modal"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Main Interactive Stage */}
+            <div className="flex-1 flex items-center justify-center relative my-4 select-none">
+              {/* Left/Right controls for Desktop */}
+              <button 
+                onClick={(e) => { e.stopPropagation(); handlePrevGallery(); }}
+                className="absolute left-2 md:left-6 z-50 p-3 md:p-4 bg-white/10 hover:bg-white/20 text-white rounded-full transition cursor-pointer"
+                aria-label="Previous item"
+              >
+                <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
+              </button>
+
+              {/* Main Sliding Content Frame */}
+              <div 
+                className="w-full max-w-4xl h-[60vh] md:h-[70vh] flex items-center justify-center relative overflow-hidden"
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+              >
+                <motion.img 
+                  key={activeGalleryIndex}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                  src={GALLERY_ITEMS[activeGalleryIndex].image} 
+                  alt={GALLERY_ITEMS[activeGalleryIndex].title}
+                  className="max-w-full max-h-full object-contain rounded-xl shadow-2xl"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+
+              <button 
+                onClick={(e) => { e.stopPropagation(); handleNextGallery(); }}
+                className="absolute right-2 md:right-6 z-50 p-3 md:p-4 bg-white/10 hover:bg-white/20 text-white rounded-full transition cursor-pointer"
+                aria-label="Next item"
+              >
+                <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
+              </button>
+            </div>
+
+            {/* Bottom Caption and Counter */}
+            <div className="w-full text-center max-w-xl mx-auto pb-6 z-50">
+              <p className="font-sans text-xs md:text-sm text-cream/80 mb-4 font-normal px-4">
+                {GALLERY_ITEMS[activeGalleryIndex].desc}
+              </p>
+              <div className="flex justify-center gap-1.5">
+                {GALLERY_ITEMS.map((_, index) => (
+                  <button 
+                    key={index}
+                    onClick={() => setActiveGalleryIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      activeGalleryIndex === index ? 'bg-gold w-6' : 'bg-white/30 hover:bg-white/60'
+                    }`}
+                    aria-label={`Go to item ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+      </AnimatePresence>
 
       {/* Try-on popup portal */}
       {tryOnOpen && (

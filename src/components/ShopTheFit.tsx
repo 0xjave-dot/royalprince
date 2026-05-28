@@ -25,7 +25,7 @@ const OUTFITS_DATA: Outfit[] = [
     hotspots: [
       {
         x: '42%',
-        y: '32%',
+        y: '22%',
         product: {
           id: 'fit-cream-blazer',
           name: 'Oversized Cream Blazer',
@@ -33,14 +33,14 @@ const OUTFITS_DATA: Outfit[] = [
           description: 'A masterpiece of structural tailoring. Features sharp peak lapels and premium linen blend drape.',
           sizes: ['S', 'M', 'L'],
           colors: ['Cream'],
-          mainImage: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=450&auto=format&fit=crop',
-          hoverImage: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=450&auto=format&fit=crop',
-          category: 'Blazers',
+          mainImage: 'https://www.shoppriceless.com/cdn/shop/files/Millicent-Cream-Blazer_CUTOUT.jpg?v=1774377829&width=2000',
+          hoverImage: 'https://www.shoppriceless.com/cdn/shop/files/Millicent-Cream-Blazer_CUTOUT.jpg?v=1774377829&width=2000',
+          category: 'Two-pieces',
           tags: ['Exclusives', 'The Power Look']
         }
       },
       {
-        x: '52%',
+        x: '57%',
         y: '65%',
         product: {
           id: 'fit-black-linen-trouser',
@@ -49,14 +49,14 @@ const OUTFITS_DATA: Outfit[] = [
           description: 'Crafted from premium airy Lagos linen. Perfect tailored crop waist with high-rise drape.',
           sizes: ['S', 'M', 'L', 'XL'],
           colors: ['Black'],
-          mainImage: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=450&auto=format&fit=crop',
-          hoverImage: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=450&auto=format&fit=crop',
-          category: 'Co-ords',
+          mainImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0TPW3E7IE2unfOq6OZ6-5ni9HgmZ56Tjybw&s',
+          hoverImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0TPW3E7IE2unfOq6OZ6-5ni9HgmZ56Tjybw&s',
+          category: 'Two-pieces',
           tags: ['The Power Look']
         }
       },
       {
-        x: '62%',
+        x: '52%',
         y: '92%',
         product: {
           id: 'fit-black-pointed-heels',
@@ -65,136 +65,10 @@ const OUTFITS_DATA: Outfit[] = [
           description: 'Sleek, iconic leather heels designed to elevate standard Lagos evening looks.',
           sizes: ['37', '38', '39', '40', '41'],
           colors: ['Black'],
-          mainImage: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=450&auto=format&fit=crop',
-          hoverImage: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=450&auto=format&fit=crop',
+          mainImage: 'https://www.edgars.co.za/cdn/shop/files/edg200220246079.jpg?v=1716284846',
+          hoverImage: 'https://www.edgars.co.za/cdn/shop/files/edg200220246079.jpg?v=1716284846',
           category: 'Shoes',
           tags: ['Accessories', 'The Power Look']
-        }
-      }
-    ]
-  },
-  {
-    id: 'outfit-evening-look',
-    title: '',
-    image: 'https://i.ibb.co/PZ7mtQqL/Untitled-design-9.png',
-    hotspots: [
-      {
-        x: '48%',
-        y: '15%',
-        product: {
-          id: 'dress-scarlet',
-          name: 'Scarlet Wrap Dress',
-          price: 28000,
-          description: 'An elegant, figures-flattering wrap dress cut from lightweight premium linen. Perfect for romantic dinners in Victoria Island.',
-          sizes: ['S', 'M', 'L', 'XL'],
-          colors: ['Red'],
-          mainImage: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=450&auto=format&fit=crop',
-          hoverImage: 'https://images.unsplash.com/photo-1609357605129-26f69add5d6e?w=450&auto=format&fit=crop',
-          category: 'Dresses',
-          tags: ['Trending', 'Best Seller', 'The Evening Look']
-        }
-      },
-      {
-        x: '25%',
-        y: '60%',
-        product: {
-          id: 'fit-gold-clutch',
-          name: 'Gold Clutch Bag',
-          price: 18000,
-          description: 'Glossy metallic evening clutch designed as Lagos’ finest luxury statement carrier.',
-          sizes: ['One Size'],
-          colors: ['Gold'],
-          mainImage: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=450&auto=format&fit=crop',
-          hoverImage: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=450&auto=format&fit=crop',
-          category: 'Bags',
-          tags: ['Accessories', 'The Evening Look']
-        }
-      },
-      {
-        x: '70%',
-        y: '80%',
-        product: {
-          id: 'fit-strappy-gold-heels',
-          name: 'Strappy Gold Heels',
-          price: 22000,
-          description: 'Radiant wrap-around gold straps and high stiletto profile to highlight runway strides.',
-          sizes: ['38', '39', '40', '41'],
-          colors: ['Gold'],
-          mainImage: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=450&auto=format&fit=crop',
-          hoverImage: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=450&auto=format&fit=crop',
-          category: 'Shoes',
-          tags: ['The Evening Look']
-        }
-      }
-    ]
-  },
-  {
-    id: 'outfit-weekend-chic',
-    title: '',
-    image: 'https://i.ibb.co/S7PwrxhQ/Untitled-design-10.png ',
-    hotspots: [
-      {
-        x: '40%',
-        y: '25%',
-        product: {
-          id: 'fit-sage-linen-shirt',
-          name: 'Sage Green Linen Shirt',
-          price: 32000,
-          description: 'Effortless cool silhouette. Pure premium breathable Sage linen weave for humid weekends.',
-          sizes: ['S', 'M', 'L'],
-          colors: ['Sage Green'],
-          mainImage: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=450&auto=format&fit=crop',
-          hoverImage: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=450&auto=format&fit=crop',
-          category: 'Tops',
-          tags: ['The Weekend Chic']
-        }
-      },
-      {
-        x: '55%',
-        y: '65%',
-        product: {
-          id: 'fit-wide-leg-beige-trousers',
-          name: 'Wide Leg Beige Trousers',
-          price: 35000,
-          description: 'High-waisted, beautifully relaxed flow pants suitable for a casual brunch dynamic.',
-          sizes: ['XS', 'S', 'M', 'L'],
-          colors: ['Beige'],
-          mainImage: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=450&auto=format&fit=crop',
-          hoverImage: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=450&auto=format&fit=crop',
-          category: 'Co-ords',
-          tags: ['The Weekend Chic']
-        }
-      },
-      {
-        x: '35%',
-        y: '78%',
-        product: {
-          id: 'fit-brown-leather-loafers',
-          name: 'Brown Leather Loafers',
-          price: 45000,
-          description: 'Handcrafted luxury leather slip-on loafers matching all Lagos luxury leisure setups.',
-          sizes: ['40', '41', '42', '43', '44'],
-          colors: ['Brown'],
-          mainImage: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=450&auto=format&fit=crop',
-          hoverImage: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=450&auto=format&fit=crop',
-          category: 'Shoes',
-          tags: ['The Weekend Chic']
-        }
-      },
-      {
-        x: '65%',
-        y: '35%',
-        product: {
-          id: 'fit-gold-hoop-earrings',
-          name: 'Gold Hoop Earrings',
-          price: 12000,
-          description: 'Elegant heavyweight gold hoops with high polish structure to pair with sleek ponytails.',
-          sizes: ['One Size'],
-          colors: ['Gold'],
-          mainImage: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=450&auto=format&fit=crop',
-          hoverImage: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=450&auto=format&fit=crop',
-          category: 'Bags',
-          tags: ['Accessories', 'The Weekend Chic']
         }
       }
     ]
@@ -398,7 +272,8 @@ export default function ShopTheFit() {
                           animate={{ opacity: 1, scale: 1, y: 0 }}
                           exit={{ opacity: 0, scale: 0.85, y: 10 }}
                           transition={{ duration: 0.25, ease: 'easeOut' }}
-                          className="absolute bottom-10 left-1/2 -translate-x-1/2 bg-white rounded-2xl shadow-2xl p-4 border border-burgundy/15 w-[240px] hotspot-card z-50 text-nearblack"
+                          className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-4 border border-burgundy/15 w-[90vw] max-w-xs sm:w-[320px] sm:max-w-sm hotspot-card z-[9999] text-nearblack overflow-auto"
+                          style={{ maxHeight: '90vh' }}
                         >
                           {/* Close button */}
                           <button 
@@ -415,7 +290,7 @@ export default function ShopTheFit() {
                           <img 
                             src={hs.product.mainImage} 
                             alt={hs.product.name} 
-                            className="w-full h-28 object-cover rounded-xl mb-3 border border-burgundy/5"
+                            className="w-full h-28 object-contain rounded-xl mb-3 border border-burgundy/5 bg-[#FAF6F0]"
                             referrerPolicy="no-referrer"
                           />
                           <h4 className="font-serif text-sm font-bold uppercase tracking-wider mb-1 leading-tight">{hs.product.name}</h4>

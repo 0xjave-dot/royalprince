@@ -7,7 +7,7 @@ export interface Product {
   colors?: string[];
   mainImage: string;
   hoverImage: string;
-  category: 'Dresses' | 'Co-ords' | 'Tops' | 'Blazers' | 'Bags' | 'Shoes';
+  category: 'Dresses' | 'Two-pieces' | 'Bags' | 'Shoes';
   tags: string[];
 }
 

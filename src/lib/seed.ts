@@ -53,7 +53,7 @@ export const STATIC_PRODUCTS: Product[] = [
     tags: ["Trending"]
   },
 
-  // Co-ords
+  // Two-pieces
   {
     id: "coord-camel",
     name: "Camel Blazer Set",
@@ -63,7 +63,7 @@ export const STATIC_PRODUCTS: Product[] = [
     colors: ["Camel", "Ivory"],
     mainImage: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800&auto=format&fit=crop",
     hoverImage: "https://images.unsplash.com/photo-1618244972963-dbee1a7edc95?w=800&auto=format&fit=crop",
-    category: "Co-ords",
+    category: "Two-pieces",
     tags: ["Trending", "Best Seller"]
   },
   {
@@ -75,7 +75,7 @@ export const STATIC_PRODUCTS: Product[] = [
     colors: ["Black"],
     mainImage: "https://images.unsplash.com/photo-1617137968427-85924c800a22?w=800&auto=format&fit=crop",
     hoverImage: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=800&auto=format&fit=crop",
-    category: "Co-ords",
+    category: "Two-pieces",
     tags: ["Classic"]
   },
   {
@@ -87,7 +87,7 @@ export const STATIC_PRODUCTS: Product[] = [
     colors: ["Sage Green"],
     mainImage: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800&auto=format&fit=crop",
     hoverImage: "https://images.unsplash.com/photo-1534126511673-b6899657816a?w=800&auto=format&fit=crop",
-    category: "Co-ords",
+    category: "Two-pieces",
     tags: ["New Arrival"]
   },
   {
@@ -99,11 +99,11 @@ export const STATIC_PRODUCTS: Product[] = [
     colors: ["Burgundy Noir"],
     mainImage: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&auto=format&fit=crop",
     hoverImage: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=800&auto=format&fit=crop",
-    category: "Co-ords",
+    category: "Two-pieces",
     tags: ["Trending"]
   },
 
-  // Tops
+  // Tops (under Two-pieces category)
   {
     id: "top-white",
     name: "White Puff Sleeve Blouse",
@@ -113,7 +113,7 @@ export const STATIC_PRODUCTS: Product[] = [
     colors: ["White"],
     mainImage: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&auto=format&fit=crop",
     hoverImage: "https://images.unsplash.com/photo-1603252109303-2751441dd157?w=800&auto=format&fit=crop",
-    category: "Tops",
+    category: "Two-pieces",
     tags: ["New Arrival", "Best Seller"]
   },
   {
@@ -125,7 +125,7 @@ export const STATIC_PRODUCTS: Product[] = [
     colors: ["Tan Brown"],
     mainImage: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&auto=format&fit=crop",
     hoverImage: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800&auto=format&fit=crop",
-    category: "Tops",
+    category: "Two-pieces",
     tags: ["Trending"]
   },
   {
@@ -137,7 +137,7 @@ export const STATIC_PRODUCTS: Product[] = [
     colors: ["Stripe"],
     mainImage: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&auto=format&fit=crop",
     hoverImage: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=800&auto=format&fit=crop",
-    category: "Tops",
+    category: "Two-pieces",
     tags: ["Casual"]
   },
   {
@@ -149,11 +149,11 @@ export const STATIC_PRODUCTS: Product[] = [
     colors: ["Classic Black"],
     mainImage: "https://images.unsplash.com/photo-1618244972963-dbee1a7edc95?w=800&auto=format&fit=crop",
     hoverImage: "https://images.unsplash.com/photo-1551163943-3f6a855d1153?w=800&auto=format&fit=crop",
-    category: "Tops",
+    category: "Two-pieces",
     tags: ["Essential"]
   },
 
-  // Blazers
+  // Blazers (under Two-pieces category)
   {
     id: "blazer-cream",
     name: "Oversized Cream Blazer",
@@ -163,7 +163,7 @@ export const STATIC_PRODUCTS: Product[] = [
     colors: ["Cream", "Beige"],
     mainImage: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&auto=format&fit=crop",
     hoverImage: "https://images.unsplash.com/photo-1611042553975-08733608b2db?w=800&auto=format&fit=crop",
-    category: "Blazers",
+    category: "Two-pieces",
     tags: ["Trending", "Best Seller"]
   },
   {
@@ -175,7 +175,7 @@ export const STATIC_PRODUCTS: Product[] = [
     colors: ["Navy Blue"],
     mainImage: "https://images.unsplash.com/photo-1548624149-f9b18590bc42?w=800&auto=format&fit=crop",
     hoverImage: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&auto=format&fit=crop",
-    category: "Blazers",
+    category: "Two-pieces",
     tags: ["Professional"]
   },
   {
@@ -187,7 +187,7 @@ export const STATIC_PRODUCTS: Product[] = [
     colors: ["Black"],
     mainImage: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&auto=format&fit=crop",
     hoverImage: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&auto=format&fit=crop",
-    category: "Blazers",
+    category: "Two-pieces",
     tags: ["Classic"]
   },
   {
@@ -199,7 +199,7 @@ export const STATIC_PRODUCTS: Product[] = [
     colors: ["Rust Brown"],
     mainImage: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=800&auto=format&fit=crop",
     hoverImage: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=800&auto=format&fit=crop",
-    category: "Blazers",
+    category: "Two-pieces",
     tags: ["New Arrival"]
   },
 

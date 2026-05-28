@@ -18,7 +18,7 @@ export default function OrderConfirmation() {
   });
 
   const whatsappMessage = `Hi Fab Ruby Clothiers! I just completed checkout for my fashion order on reference: ${ref}. My name is ${name}. Please check the payment and details. Let's coordinate delivery. Thank you!`;
-  const whatsappUrl = `https://wa.me/2348180000000?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappUrl = `https://wa.me/2348028598695?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <div className="min-h-screen bg-cream py-20 px-6 md:px-12 max-w-2xl mx-auto w-full flex flex-col items-center justify-center text-center" id="confirmation-page-root">

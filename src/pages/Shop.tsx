@@ -65,9 +65,7 @@ export default function Shop() {
   const filteredProducts = STATIC_PRODUCTS.filter((product) => {
     // 1. Category Filter Choice
     if (categoryFilter !== 'All') {
-      const isTwoPiecesMatch = categoryFilter.toLowerCase() === 'two-pieces' && product.category.toLowerCase() === 'co-ords';
-      const isDirectMatch = product.category.toLowerCase() === categoryFilter.toLowerCase();
-      if (!isTwoPiecesMatch && !isDirectMatch) {
+      if (product.category.toLowerCase() !== categoryFilter.toLowerCase()) {
         return false;
       }
     }
@@ -169,7 +167,7 @@ export default function Shop() {
           {/* Categories select checklist */}
           <div className="flex flex-col gap-3">
             <h3 className="font-sans text-[10px] tracking-widest font-black uppercase text-burgundy mb-2">Category Collections</h3>
-            {['All', 'Dresses', 'Two-pieces', 'Blazers', 'Tops', 'Bags', 'Shoes'].map((cat) => (
+            {['All', 'Two-pieces', 'Bags', 'Dresses', 'Shoes'].map((cat) => (
               <button 
                 key={cat}
                 onClick={() => handleSetCategory(cat)}
@@ -237,7 +235,9 @@ export default function Shop() {
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
               {filteredProducts.map((p) => (
-                <ProductCard key={p.id} product={p} />
+                <React.Fragment key={p.id}>
+                  <ProductCard product={p} />
+                </React.Fragment>
               ))}
             </div>
           )}

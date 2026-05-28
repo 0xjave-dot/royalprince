@@ -112,16 +112,47 @@ export default function AIStylistChat() {
 
   return (
     <>
-      {/* Floating 3D Pulsing Orb Bubble */}
-      <div className="fixed bottom-6 right-6 z-40 hidden md:block">
-        <div className="relative w-[86px] h-[86px] select-none">
-          {/* Sonar Ping Ring: radiates outward every 3 seconds */}
-          <div className="absolute inset-3 rounded-full bg-burgundy/30 pointer-events-none animate-sonar-ping" />
+      {/* Aligned Floating Action Circles (WhatsApp & Ruby AI) */}
+      <div className="fixed bottom-5 right-5 z-40 flex flex-col gap-3.5 items-center select-none" id="floating-actions-container">
+        
+        {/* 1. PULSING WHATSAPP FLOAT */}
+        <div className="relative w-14 h-14 md:w-[72px] md:h-[72px]">
+          {/* Sonar Ping Ring: radiates outward */}
+          <div className="absolute inset-1.5 rounded-full bg-[#25D366]/25 pointer-events-none animate-ping duration-1000" />
+          
+          <a 
+            href="https://wa.me/2348028598695?text=Hi%20Fab%20Ruby%20Clothiers!%20I%20am%20interested%20in%20connecting%20about%20your%20collection."
+            target="_blank"
+            rel="noopener noreferrer"
+            id="btn-whatsapp-bubble"
+            className="group relative w-14 h-14 md:w-[72px] md:h-[72px] rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 border-2 border-white/20 transition-all duration-300 cursor-pointer"
+            title="Chat on WhatsApp"
+          >
+            {/* WhatsApp Premium SVG path */}
+            <svg 
+              className="w-7 h-7 md:w-9 md:h-9 fill-current" 
+              viewBox="0 0 24 24" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M12.004 2C6.48 2 2.001 6.477 2.001 12c0 1.892.525 3.66 1.438 5.17l-1.424 5.215 5.34-1.401c1.472.8 3.14 1.26 4.904 1.26 5.524 0 10.003-4.477 10.003-10S17.528 2 12.004 2zm5.72 13.568c-.244.685-1.2 1.265-1.638 1.309-.434.043-.966.195-2.923-.574-2.506-.985-4.104-3.535-4.228-3.702-.125-.166-1.018-1.352-1.018-2.578s.642-1.83.87-2.064c.228-.234.498-.292.664-.292.166 0 .332.003.477.01.15.007.354-.055.553.425.2.485.683 1.663.743 1.785.06.122.09.263.007.426-.08.163-.122.26-.245.405-.122.143-.254.32-.363.43-.122.122-.25.255-.107.498.143.243.636 1.045 1.37 1.7.945.84 1.742 1.1 2.005 1.222.26.126.41.104.563-.07.153-.175.664-.77.842-1.033.178-.263.356-.22.598-.13.243.088 1.543.727 1.808.857.264.13.44.195.503.305.064.11.064.636-.18 1.32z" />
+            </svg>
+            
+            {/* Tooltip hovering */}
+            <span className="absolute right-16 md:right-22 bg-nearblack text-white text-[9px] tracking-[0.2em] uppercase py-1.5 px-3 rounded shadow-md border border-gold/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none font-bold">
+              WhatsApp Chat
+            </span>
+          </a>
+        </div>
+
+        {/* 2. RUBY STYLIST FLOAT */}
+        <div className="relative w-14 h-14 md:w-[72px] md:h-[72px]">
+          {/* Sonar Ping Ring: radiates outward */}
+          <div className="absolute inset-1.5 rounded-full bg-burgundy/30 pointer-events-none animate-sonar-ping" />
           
           <button 
             onClick={() => setIsOpen(true)}
             id="btn-stylist-bubble"
-            className="group relative w-[86px] h-[86px] select-none flex items-center justify-center active:scale-95 transition-all duration-300 cursor-pointer overflow-visible"
+            className="group relative w-14 h-14 md:w-[72px] md:h-[72px] select-none flex items-center justify-center active:scale-95 transition-all duration-300 cursor-pointer overflow-visible"
             title="Stylist Ruby"
           >
             <img 
@@ -132,11 +163,12 @@ export default function AIStylistChat() {
             />
             
             {/* Tooltip hovering */}
-            <span className="absolute right-24 bg-nearblack text-white text-[9px] tracking-[0.2em] uppercase py-1.5 px-3 rounded shadow-md border border-gold/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none font-bold">
+            <span className="absolute right-16 md:right-22 bg-nearblack text-white text-[9px] tracking-[0.2em] uppercase py-1.5 px-3 rounded shadow-md border border-gold/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none font-bold">
               Stylist Ruby
             </span>
           </button>
         </div>
+
       </div>
 
       {/* Floating sliding lounge */}

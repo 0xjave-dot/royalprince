@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAppState } from '../lib/StateContext';
-import { Search, Heart, ShoppingBag, User, Menu, X, Shirt, Home } from 'lucide-react';
+import { Search, Heart, ShoppingBag, User, X, Shirt, Home } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { db } from '../lib/firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
@@ -9,7 +9,6 @@ import { STATIC_PRODUCTS } from '../lib/seed';
 
 export default function Header() {
   const { cart, wishlist, setSearchOpen, searchOpen, setCartOpen, stylistOpen, setStylistOpen } = useAppState();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const navigate = useNavigate();
@@ -17,7 +16,6 @@ export default function Header() {
 
   // Close loaders on navigation
   useEffect(() => {
-    setMobileMenuOpen(false);
     setSearchOpen(false);
     setSearchQuery('');
     setSearchResults([]);
@@ -57,73 +55,7 @@ export default function Header() {
 
   return (
     <>
-      {/* COMPACT MOBILE TOP BAR: logo aligned to left, no top nav */}
-      <header className="md:hidden sticky top-0 z-40 bg-cream/95 backdrop-blur-md border-b border-burgundy/5 px-3 py-2 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group ml-0" id="lnk-logo-mobile">
-          <img 
-            src="https://i.ibb.co/G4BYJN9h/Gemini-Generated-Image-j1yadkj1yadkj1ya-removebg-preview.png" 
-            alt="Fab Ruby Logo" 
-            className="w-8 h-8 object-contain transition duration-200 group-hover:scale-105"
-            referrerPolicy="no-referrer"
-          />
-          <div className="flex flex-col leading-none -mt-0.5">
-            <span className="font-logo text-sm tracking-[0.03em] font-bold text-brightred uppercase leading-none">Fab</span>
-            <span className="font-logo text-xs tracking-[0.03em] font-semibold text-brightred uppercase leading-none -mt-0.5">Ruby</span>
-          </div>
-        </Link>
-
-        {/* Action Icons (mobile) - keep on the right, smaller */}
-        <div className="flex items-center gap-3">
-          <button 
-            onClick={() => setSearchOpen(true)}
-            id="btn-search-trigger-mobile"
-            className="text-nearblack hover:text-burgundy transition cursor-pointer p-1"
-            aria-label="Search items"
-          >
-            <Search className="w-5 h-5 pointer-events-none" />
-          </button>
-
-          <Link 
-            to="/wishlist" 
-            id="lnk-wishlist-mobile"
-            className="text-nearblack hover:text-burgundy transition relative p-1"
-            aria-label="Saved products"
-          >
-            <Heart className="w-5 h-5" />
-            {wishlist.length > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 bg-gold text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
-                {wishlist.length}
-              </span>
-            )}
-          </Link>
-
-          <Link 
-            to="/account" 
-            id="lnk-account-mobile"
-            className="text-nearblack hover:text-burgundy transition p-1"
-            aria-label="User Account"
-          >
-            <User className="w-5 h-5" />
-          </Link>
-
-          <button 
-            onClick={() => setCartOpen(true)}
-            id="btn-cart-trigger-mobile"
-            className="text-nearblack hover:text-burgundy transition relative cursor-pointer p-1"
-            aria-label="Open Shopping Bag"
-          >
-            <ShoppingBag className="w-5 h-5 pointer-events-none" />
-            {cartCount > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 bg-burgundy text-white text-[9px] font-bold w-4.5 h-4.5 rounded-full flex items-center justify-center">
-                {cartCount}
-              </span>
-            )}
-          </button>
-        </div>
-      </header>
-
-      {/* FULL HEADER for md+ screens */}
-      <header className="hidden md:flex sticky top-0 z-40 bg-cream/95 backdrop-blur-md border-b border-burgundy/5 px-6 py-4 md:px-12 flex items-center justify-between">
+      <header className="sticky top-0 z-40 bg-cream/95 backdrop-blur-md border-b border-burgundy/5 px-6 py-4 md:px-12 flex items-center justify-between">
         {/* LOGO */}
         <Link to="/" className="flex items-center gap-3 group" id="lnk-logo">
           <img 
@@ -210,70 +142,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* MOBILE FULLSCREEN HAMBURGER OVERLAY */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 bg-cream flex flex-col p-6"
-            id="mobile-nav-overlay"
-          >
-            <div className="flex items-center justify-between mb-12">
-              <div className="flex items-center gap-3">
-                <img 
-                  src="https://i.ibb.co/G4BYJN9h/Gemini-Generated-Image-j1yadkj1yadkj1ya-removebg-preview.png" 
-                  alt="Fab Ruby Logo" 
-                  className="w-11 h-11 object-contain"
-                  referrerPolicy="no-referrer"
-                />
-                <span className="font-logo text-lg tracking-[0.05em] font-bold text-brightred uppercase">Fab Ruby</span>
-              </div>
-              <button 
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-burgundy p-2"
-                id="btn-close-mobile-menu"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
 
-            <nav className="flex flex-col gap-6 text-center">
-              {navLinks.map((link, idx) => (
-                <motion.div
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.05 }}
-                  key={link.label}
-                >
-                  <Link 
-                    to={link.path}
-                    className="font-serif text-3xl tracking-wide text-nearblack hover:text-burgundy transition py-2 block"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-              <hr className="border-burgundy/10 my-4" />
-              <Link
-                to="/account"
-                className="font-sans font-medium uppercase tracking-wider text-burgundy text-lg flex items-center justify-center gap-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <User className="w-5 h-5" /> Account Details
-              </Link>
-            </nav>
-
-            <div className="mt-auto text-center text-nearblack/50 text-xs">
-              <p className="font-serif italic text-sm text-burgundy mb-1">"Dress Like You Mean It"</p>
-              <p>© 2026 Fab Ruby Clothiers. Gbagada, Lagos.</p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* FULLSCREEN SEARCH OVERLAY */}
       <AnimatePresence>
