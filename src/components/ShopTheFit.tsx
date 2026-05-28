@@ -313,12 +313,12 @@ export default function ShopTheFit() {
         {/* Carousel Container */}
         <div 
           ref={containerRef}
-          className="relative w-full max-w-xl mx-auto flex flex-col items-center"
+          className="relative w-full max-w-md mx-auto flex flex-col items-center"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
           {/* Main Image Viewport with absolute hotspots */}
-          <div className="relative w-full aspect-[4/5] md:aspect-[3/4] bg-nearblack/5 rounded-3xl overflow-hidden border border-burgundy/10 shadow-2xl group select-none">
+          <div className="relative w-full aspect-[3/4] md:aspect-[4/5] bg-nearblack/5 rounded-2xl overflow-hidden border border-burgundy/10 shadow-xl group select-none">
             
             {/* Slide Showpiece Image */}
             <AnimatePresence mode="wait">
@@ -326,7 +326,7 @@ export default function ShopTheFit() {
                 key={outfit.id}
                 src={outfit.image} 
                 alt={outfit.title} 
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-contain"
                 initial={{ opacity: 0, scale: 1.03 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
