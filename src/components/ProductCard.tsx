@@ -5,8 +5,41 @@ import { Heart, ShoppingBag } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 
-interface ProductCardProps {
-  product: Product;
+const itemVariants = {
+  initial: { opacity: 0, y: 16 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeOut' } }
+};
+
+export function ProductCard({ product }: { product: Product }) {
+  const { wishlist, toggleWishlist } = useAppState();
+  const isWishlisted = wishlist.includes(product.id);
+
+  return (
+    <motion.div 
+      variants={itemVariants}
+      className="flex flex-col gap-3 group"
+    >
+      <div className="relative aspect-[3/4] rounded-md overflow-hidden bg-bg border border-line">
+        <img 
+          src={product.mainImage} 
+          alt={product.name}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <button 
+          onClick={() => toggleWishlist(product.id)}
+          className="absolute top-3 right-3 w-8 h-8 bg-surface rounded-full shadow-card flex items-center justify-center text-ink-ghost"
+        >
+          <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-danger text-danger' : ''}`} />
+        </button>
+      </div>
+
+      <div className="flex flex-col">
+        <span className="text-[11px] font-semibold text-ink-ghost uppercase tracking-[0.1em]">Fabruby</span>
+        <h4 className="text-sm font-medium text-ink truncate mt-0.5">{product.name}</h4>
+        <span className="text-sm font-bold text-accent mt-1">₦{product.price.toLocaleString()}</span>
+      </div>
+    </motion.div>
+  );
 }
 
 export default function ProductCard({ product }: ProductCardProps) {

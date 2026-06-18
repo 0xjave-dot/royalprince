@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useAppState } from '../lib/StateContext';
 import { STATIC_PRODUCTS } from '../lib/seed';
-import ProductCard from '../components/ProductCard';
+import { ProductCard } from '../components/ProductCard';
 import VirtualTryOnModal from '../components/VirtualTryOnModal';
-import { ArrowRight, MessageSquare, Heart, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, MessageSquare, Heart, X, ChevronLeft, ChevronRight, Bell, ShoppingBag, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import CategoryTiltCard from '../components/CategoryTiltCard';
@@ -130,10 +130,101 @@ export default function Home() {
     setTryOnOpen(true);
   };
 
+  const categories = ['All', 'New In', 'Dresses', 'Tops', 'Bottoms', 'Bags', 'Shoes'];
+
   return (
-    <div className="flex flex-col bg-cream" id="homepage-root">
-      
-      {/* SECTION 1: ELEGANT PRIVÉ HERO CLOSET */}
+    <motion.div 
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      className="flex flex-col bg-bg min-h-screen pb-24"
+    >
+      {/* Top Bar */}
+      <header className="sticky top-0 z-40 bg-surface/80 backdrop-blur-md px-6 py-4 flex items-center justify-between border-b border-line">
+        <h1 className="font-display text-2xl font-semibold text-accent italic">Fabruby</h1>
+        <div className="flex items-center gap-4">
+          <Bell className="w-5 h-5 text-ink" />
+          <div className="relative">
+            <ShoppingBag className="w-5 h-5 text-ink" />
+            <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-accent text-white text-[10px] font-bold rounded-full flex items-center justify-center">2</span>
+          </div>
+        </div>
+      </header>
+
+      {/* Search Bar */}
+      <div className="px-6 py-4">
+        <div className="h-12 bg-surface rounded-full border border-line flex items-center px-4 gap-3 text-ink-ghost">
+          <Search className="w-4.5 h-4.5" />
+          <span className="text-sm">Search dresses, tops, bags...</span>
+        </div>
+      </div>
+
+      {/* Category Row */}
+      <div className="flex gap-2 overflow-x-auto px-6 pb-4 no-scrollbar">
+        {categories.map((cat, i) => (
+          <button 
+            key={cat}
+            className={`px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-widest whitespace-nowrap transition-colors
+              ${i === 0 ? 'bg-accent text-white' : 'bg-surface border border-line text-ink-soft'}`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* Hero Banner */}
+      <div className="px-6 mb-12">
+        <div className="relative aspect-[16/9] rounded-xl overflow-hidden shadow-card group">
+          <img 
+            src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80" 
+            className="w-full h-full object-cover" 
+            alt="Summer collection"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
+            <h2 className="font-display text-2xl text-white italic mb-2">Summer Bloom</h2>
+            <button className="w-fit px-6 py-2 bg-white rounded-full text-xs font-bold uppercase tracking-widest">Shop Collection</button>
+          </div>
+        </div>
+      </div>
+
+      {/* New In Section */}
+      <section className="mb-12">
+        <div className="px-6 flex justify-between items-end mb-6">
+          <h3 className="font-display text-xl text-ink">New Arrivals</h3>
+          <span className="text-xs font-bold text-accent uppercase tracking-widest border-b border-accent/20 pb-1">See All</span>
+        </div>
+        <div className="flex gap-4 overflow-x-auto px-6 no-scrollbar">
+          {STATIC_PRODUCTS.slice(0, 5).map(product => (
+            <div key={product.id} className="w-[200px] flex-shrink-0">
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Trending Masonry Grid */}
+      <section className="px-6">
+        <h3 className="font-display text-xl text-ink mb-6">Trending Now</h3>
+        <div className="grid grid-cols-2 gap-4">
+          {STATIC_PRODUCTS.slice(5, 9).map((product, i) => (
+            <div key={product.id} className={i % 3 === 0 ? 'mt-0' : 'mt-4'}>
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Bottom Nav Placeholder */}
+      <nav className="fixed bottom-0 left-0 right-0 max-w-[430px] mx-auto bg-surface/90 backdrop-blur-lg border-t border-line px-6 py-3 flex justify-between items-center z-50">
+        <HomeIcon className="text-accent" />
+        <Compass className="text-ink-ghost" />
+        <ShoppingBag className="text-ink-ghost" />
+        <Heart className="text-ink-ghost" />
+        <User className="text-ink-ghost" />
+      </nav>
+    </motion.div>
+  );
+}
       <section className="relative w-full bg-white py-12 md:py-16 lg:py-20 border-b border-burgundy/10 overflow-visible">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 overflow-visible grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center">
           

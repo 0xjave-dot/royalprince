@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=DM+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --color-bg: #FAFAF8;
+  --color-surface: #FFFFFF;
+  --color-ink: #1A1A1A;
+  --color-ink-soft: #6B6B6B;
+  --color-ink-ghost: #B0B0B0;
+  --color-accent: #C9A87C;
+  --color-accent-dim: #F3EBE0;
+  --color-line: #EBEBEB;
+  --color-danger: #D94F3D;
+  --color-success: #3D9E6A;
+
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  --shadow-card: 0 2px 12px rgba(0,0,0,0.06);
+  --shadow-lift: 0 8px 32px rgba(0,0,0,0.10);
+  --shadow-sheet: 0 -4px 40px rgba(0,0,0,0.12);
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+}
+
+body {
+  background-color: #f3f3f3; /* Desktop background */
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  max-width: 430px;
+  margin: 0 auto;
+  background-color: var(--color-bg);
+  min-height: 100vh;
+  box-shadow: 0 0 100px rgba(0,0,0,0.1);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Typography Utils */
+.font-display { font-family: var(--font-display); }
+.text-hero { font-family: var(--font-display); font-size: 48px; line-height: 1.0; font-weight: 600; font-style: italic; }
+.text-2xl { font-family: var(--font-display); font-size: 36px; line-height: 1.1; font-weight: 600; }
+.text-xl { font-family: var(--font-display); font-size: 26px; line-height: 1.2; font-weight: 500; }
+.text-xs { font-size: 11px; line-height: 1.4; }

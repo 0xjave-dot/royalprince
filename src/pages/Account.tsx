@@ -6,11 +6,17 @@ import { collection, query, where, getDocs } from 'firebase/firestore';
 import { ShoppingBag, LogOut, Mail, Lock, User, CheckCircle, Smartphone } from 'lucide-react';
 import { motion } from 'motion/react';
 
+const pageVariants = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } },
+  exit: { opacity: 0, y: -10, transition: { duration: 0.2 } }
+};
+
 export default function Account() {
   const { userProfile, loadingAuth } = useAppState();
-  
-  // Login fields
   const [isSignUp, setIsSignUp] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
@@ -98,104 +104,96 @@ export default function Account() {
   }
 
   return (
-    <div className="min-h-screen bg-cream py-16 px-6 md:px-12 max-w-4xl mx-auto w-full" id="account-page-root">
-      
+    <motion.div 
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="min-h-screen bg-bg p-6 pt-12 flex flex-col items-center"
+    >
       {!userProfile ? (
-        // STATE 1: SECURE AUTHENTICATION SCREEN FOR BESPOKE SHOPPERS
-        <motion.div 
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="max-w-md mx-auto bg-white border border-burgundy/10 p-8 rounded-2xl shadow-xl space-y-8"
-        >
-          <div className="text-center flex flex-col items-center">
-            <img 
-              src="https://i.ibb.co/G4BYJN9h/Gemini-Generated-Image-j1yadkj1yadkj1ya-removebg-preview.png" 
-              alt="Fab Ruby Logo" 
-              className="w-14 h-14 object-contain mb-4"
-              referrerPolicy="no-referrer"
-            />
-            <h2 className="font-logo text-xl font-bold uppercase tracking-wider text-brightred">
-              {isSignUp ? 'REGISTER AT FAB RUBY' : 'SIGN IN CLUB LOUNGE'}
+        <div className="w-full max-w-sm space-y-12">
+          <div className="text-center">
+            <h1 className="font-display text-4xl font-semibold text-accent">Fabruby</h1>
+            <h2 className="text-xl font-display text-ink mt-8">
+              {isSignUp ? 'Create account' : 'Welcome back'}
             </h2>
-            <p className="text-xs text-nearblack/50 mt-1 uppercase font-semibold">Join the private circle of Lagos’ fashion club</p>
           </div>
 
-          {errorMsg && (
-            <div className="p-3 bg-red-100 border border-red-200 text-red-600 text-xs rounded text-center">
-              {errorMsg}
-            </div>
-          )}
-
-          <form onSubmit={handleAuthSubmit} className="space-y-4">
+          <form onSubmit={handleAuthSubmit} className="space-y-6">
             {isSignUp && (
-              <div>
-                <label className="block text-[9px] tracking-widest font-black uppercase text-burgundy mb-1.5">Full Name</label>
-                <div className="relative">
-                  <User className="absolute left-3.5 top-3.5 w-4.5 h-4.5 text-nearblack/30" />
-                  <input 
-                    type="text" 
-                    placeholder="e.g. Chioma Adebayo"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                    className="w-full bg-cream/40 border border-burgundy/10 focus:border-burgundy pl-11 pr-4 py-3 outline-none rounded-lg text-sm transition"
-                    id="inp-auth-name"
-                  />
-                </div>
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full h-[52px] px-4 rounded-md border border-line bg-surface text-sm focus:border-accent transition-all outline-none"
+                />
               </div>
             )}
 
-            <div>
-              <label className="block text-[9px] tracking-widest font-black uppercase text-burgundy mb-1.5">Email Address</label>
-              <div className="relative">
-                <Mail className="absolute left-3.5 top-3.5 w-4.5 h-4.5 text-nearblack/30" />
-                <input 
-                  type="email" 
-                  placeholder="e.g. boutique@fabruby.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="w-full bg-cream/40 border border-burgundy/10 focus:border-burgundy pl-11 pr-4 py-3 outline-none rounded-lg text-sm transition"
-                  id="inp-auth-email"
-                />
-              </div>
+            <div className="relative">
+              <input
+                type="email"
+                placeholder="Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full h-[52px] px-4 rounded-md border border-line bg-surface text-sm focus:border-accent transition-all outline-none"
+              />
             </div>
 
-            <div>
-              <label className="block text-[9px] tracking-widest font-black uppercase text-burgundy mb-1.5">Password</label>
-              <div className="relative">
-                <Lock className="absolute left-3.5 top-3.5 w-4.5 h-4.5 text-nearblack/30" />
-                <input 
-                  type="password" 
-                  placeholder="Min 6 characters..."
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  className="w-full bg-cream/40 border border-burgundy/10 focus:border-burgundy pl-11 pr-4 py-3 outline-none rounded-lg text-sm transition"
-                  id="inp-auth-password"
-                />
-              </div>
+            <div className="relative">
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full h-[52px] px-4 rounded-md border border-line bg-surface text-sm focus:border-accent transition-all outline-none"
+              />
             </div>
 
-            <button 
+            {!isSignUp && (
+              <button type="button" className="text-xs font-semibold text-accent uppercase tracking-wider float-right">
+                Forgot Password?
+              </button>
+            )}
+
+            <motion.button 
+              whileTap={{ scale: 0.96 }}
               type="submit" 
               disabled={loading}
-              id="btn-auth-submit"
-              className="w-full bg-burgundy hover:bg-nearblack text-white font-sans text-xs uppercase font-black tracking-widest py-3.5 rounded-lg flex items-center justify-center shadow-lg transition duration-300 cursor-pointer"
+              className="w-full h-[52px] bg-accent text-white rounded-full font-semibold uppercase tracking-widest text-sm shadow-card"
             >
-              {loading ? 'SYNCHRONIZING SECURE TUNNELS...' : (isSignUp ? 'CREATE CLUB MEMBERSHIP' : 'ACCESS LOUNGE PORTAL')}
-            </button>
+              {loading ? 'Processing...' : (isSignUp ? 'Create account' : 'Sign in')}
+            </motion.button>
           </form>
 
-          <div className="text-center">
-            <button 
-              onClick={toggleAuthMode}
-              className="text-xs text-burgundy hover:text-gold transition font-bold uppercase tracking-wider underline cursor-pointer"
-            >
-              {isSignUp ? 'ALREADY A CLUB MEMBER? ACCESS LOUNGE' : 'NEW TO FAB RUBY? REGISTER ACCOUNT'}
+          <div className="relative flex items-center gap-4 py-4">
+            <div className="flex-1 h-px bg-line" />
+            <span className="text-xs text-ink-ghost uppercase tracking-widest">or continue with</span>
+            <div className="flex-1 h-px bg-line" />
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <button className="h-[52px] rounded-md border border-line flex items-center justify-center gap-2 hover:bg-accent-dim transition-colors">
+              <span className="text-xs font-semibold uppercase text-ink">Google</span>
+            </button>
+            <button className="h-[52px] rounded-md border border-line flex items-center justify-center gap-2 hover:bg-accent-dim transition-colors">
+              <span className="text-xs font-semibold uppercase text-ink">Apple</span>
             </button>
           </div>
-        </motion.div>
+
+          <button 
+            onClick={toggleAuthMode}
+            className="w-full text-center text-sm text-ink-soft"
+          >
+            {isSignUp ? 'Already a member? ' : 'New here? '}
+            <span className="text-accent font-semibold">{isSignUp ? 'Sign in' : 'Create account'}</span>
+          </button>
+        </div>
+      ) : (
+        // Profile view...
       ) : (
         // STATE 2: LOYALTY SUMMARY & HISTORIC ORDER REGISTRIES
         <motion.div 
