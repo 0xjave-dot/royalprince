@@ -118,7 +118,7 @@ export default function Home() {
   // Filter trending arrivals
   const trendingProduct = STATIC_PRODUCTS.filter(p => p.tags.includes('Trending')).slice(0, 4);
 
-  const categories = [
+  const categoryGridData = [
     { name: 'Shoes', count: 2, cover: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&auto=format&fit=crop' },
     { name: 'Bags', count: 2, cover: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&auto=format&fit=crop' },
     { name: 'Two-pieces', count: 4, cover: 'https://i.ibb.co/zH71Jx0b/8DTTA.jpg' },
@@ -129,8 +129,6 @@ export default function Home() {
     setTryOnProduct(p);
     setTryOnOpen(true);
   };
-
-  const categories = ['All', 'New In', 'Dresses', 'Tops', 'Bottoms', 'Bags', 'Shoes'];
 
   return (
     <motion.div 
@@ -222,9 +220,6 @@ export default function Home() {
         <Heart className="text-ink-ghost" />
         <User className="text-ink-ghost" />
       </nav>
-    </motion.div>
-  );
-}
       <section className="relative w-full bg-white py-12 md:py-16 lg:py-20 border-b border-burgundy/10 overflow-visible">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 overflow-visible grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center">
           
@@ -280,7 +275,7 @@ export default function Home() {
             scrollbarColor: '#C9A84C rgba(0,0,0,0.05)'
           }}
         >
-          {categories.map((c) => (
+          {categoryGridData.map((c) => (
             <div key={c.name} className="flex-none w-[270px] sm:w-[310px] snap-center">
               <CategoryTiltCard category={c} />
             </div>
@@ -511,6 +506,6 @@ export default function Home() {
           initialProduct={tryOnProduct || undefined}
         />
       )}
-    </div>
+    </motion.div>
   );
 }

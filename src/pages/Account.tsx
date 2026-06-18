@@ -193,10 +193,6 @@ export default function Account() {
           </button>
         </div>
       ) : (
-        // Profile view...
-      ) : (
-        // STATE 2: LOYALTY SUMMARY & HISTORIC ORDER REGISTRIES
-        <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="space-y-12"
