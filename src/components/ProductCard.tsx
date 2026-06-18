@@ -10,7 +10,7 @@ const itemVariants = {
   animate: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeOut' } }
 };
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard({ product }: ProductCardProps) {
   const { wishlist, toggleWishlist, addToCart } = useAppState();
   const [hovered, setHovered] = useState(false);
   const [quickSizeOpen, setQuickSizeOpen] = useState(false);

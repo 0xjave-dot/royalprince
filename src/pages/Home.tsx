@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useAppState } from '../lib/StateContext';
 import { STATIC_PRODUCTS } from '../lib/seed';
-import { ProductCard } from '../components/ProductCard';
+import ProductCard from '../components/ProductCard';
 import VirtualTryOnModal from '../components/VirtualTryOnModal';
-import { ArrowRight, MessageSquare, Heart, X, ChevronLeft, ChevronRight, Bell, ShoppingBag, Search } from 'lucide-react';
+import { ArrowRight, MessageSquare, Heart, X, ChevronLeft, ChevronRight, Bell, ShoppingBag, Search, Home as HomeIcon, Compass, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import CategoryTiltCard from '../components/CategoryTiltCard';
@@ -129,6 +129,8 @@ export default function Home() {
     setTryOnProduct(p);
     setTryOnOpen(true);
   };
+
+  const categories = ['All', 'New In', 'Dresses', 'Tops', 'Bottoms', 'Bags', 'Shoes'];
 
   return (
     <motion.div 
