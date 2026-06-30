@@ -1,0 +1,19 @@
+{
+  "indexes": [],
+  "fieldOverrides": [],
+  "vectorIndexes": [
+    {
+      "collectionGroup": "products",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "embedding",
+          "vectorConfig": {
+            "dimension": 512,
+            "flat": {}
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: royal-prince-fashion-share-preview
+    env: node
+    plan: starter
+    buildCommand: npm run build
+    startCommand: npm run server
+    envVars:
+      - key: APP_URL
+        sync: false
+      - key: PORT
+        sync: false

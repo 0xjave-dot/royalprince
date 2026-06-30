@@ -1,6 +1,6 @@
 {
-  "name": "Fab Ruby Clothiers",
-  "description": "Premium women's fashion boutique in Lagos featuring AI Stylist recommendations and Virtual Try-On.",
+  "name": "Royal Prince Fashion",
+  "description": "A beautiful, fully functional fashion e-commerce application with live cart calculations, persistent wishlist, real voucher systems, order history, active tracking, settings, and interactive support chat.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

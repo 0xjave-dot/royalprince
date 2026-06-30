@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Royal Prince Fashion - Website Pitch Summary</title>
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: rgba(255, 255, 255, 0.06);
+      --panel-strong: rgba(255, 255, 255, 0.1);
+      --text: #f4f4f5;
+      --muted: rgba(244, 244, 245, 0.72);
+      --soft: rgba(244, 244, 245, 0.14);
+      --accent: #ff5790;
+      --accent-2: #004cff;
+      --accent-3: #7a9b76;
+      --warn: #ffd54f;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 87, 144, 0.18), transparent 35%),
+        radial-gradient(circle at top right, rgba(0, 76, 255, 0.16), transparent 30%),
+        linear-gradient(180deg, #0b0b0d 0%, #111114 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 20px 64px;
+    }
+
+    .hero {
+      border: 1px solid var(--soft);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04));
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    h1 {
+      margin-top: 18px;
+      font-size: clamp(2.3rem, 5vw, 4.4rem);
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      max-width: 12ch;
+    }
+
+    .lead {
+      margin-top: 18px;
+      max-width: 82ch;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
+    .meta-grid,
+    .card-grid,
+    .two-col {
+      display: grid;
+      gap: 18px;
+    }
+
+    .meta-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 24px;
+    }
+
+    .meta {
+      border-radius: 20px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .meta .label {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .meta .value {
+      margin-top: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    section {
+      margin-top: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .section-head {
+      padding: 22px 24px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
+    }
+
+    .section-head p {
+      margin: 0 0 10px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.4rem, 2vw, 2rem);
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+    }
+
+    .section-body {
+      padding: 22px 24px 24px;
+    }
+
+    .card-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      border-radius: 20px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      min-height: 100%;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+    }
+
+    .card p,
+    .card li,
+    .section-body p,
+    .section-body li {
+      color: var(--muted);
+    }
+
+    ul {
+      margin: 12px 0 0 18px;
+      padding: 0;
+    }
+
+    li { margin: 7px 0; }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .pill span {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      display: inline-block;
+    }
+
+    .two-col {
+      grid-template-columns: 1.15fr 0.85fr;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .feature {
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .feature strong {
+      display: block;
+      font-size: 0.98rem;
+      margin-bottom: 4px;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    .note {
+      margin-top: 10px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--accent);
+      border-radius: 16px;
+      background: rgba(255, 87, 144, 0.08);
+      color: rgba(255, 255, 255, 0.84);
+    }
+
+    .tech-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      overflow: hidden;
+      border-radius: 18px;
+    }
+
+    .tech-table th,
+    .tech-table td {
+      padding: 14px 14px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      vertical-align: top;
+      color: var(--muted);
+    }
+
+    .tech-table th {
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .tech-table tr:last-child td { border-bottom: 0; }
+
+    .callout {
+      margin-top: 18px;
+      border-radius: 22px;
+      padding: 18px;
+      background: linear-gradient(135deg, rgba(0, 76, 255, 0.16), rgba(122, 155, 118, 0.12));
+      border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .callout h3 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    .footer {
+      margin-top: 24px;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    @media (max-width: 960px) {
+      .meta-grid,
+      .card-grid,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+        color: #111;
+      }
+
+      .wrap {
+        max-width: none;
+        padding: 0;
+      }
+
+      .hero,
+      section,
+      .meta,
+      .card,
+      .feature,
+      .note,
+      .callout {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <div class="eyebrow">
+        <span style="width:10px;height:10px;border-radius:999px;background:var(--accent);display:inline-block"></span>
+        Royal Prince Fashion pitch summary
+      </div>
+      <h1>Fashion storefront and admin control room</h1>
+      <p class="lead">
+        Royal Prince Fashion is a polished fashion commerce prototype built to present a premium shopping experience, support guest and authenticated checkout, and give admins complete control over catalog content, vouchers, new arrivals, reviews, and analytics. This document is a standalone summary you can use for a client pitch, proposal, or product walkthrough.
+      </p>
+
+      <div class="meta-grid">
+        <div class="meta">
+          <div class="label">Product type</div>
+          <div class="value">Fashion ecommerce storefront</div>
+        </div>
+        <div class="meta">
+          <div class="label">Stack</div>
+          <div class="value">React, Vite, TypeScript, Tailwind, Firebase</div>
+        </div>
+        <div class="meta">
+          <div class="label">Key audience</div>
+          <div class="value">Customers, gift buyers, admins, support</div>
+        </div>
+        <div class="meta">
+          <div class="label">Current state</div>
+          <div class="value">Prototype with wired data and demo checkout flow</div>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <div class="section-head">
+        <p>Executive overview</p>
+        <h2>What the website does</h2>
+      </div>
+      <div class="section-body two-col">
+        <div>
+          <p>
+            Royal Prince Fashion is designed as a mobile-first fashion shopping experience with a curated visual identity and a product-led journey. The storefront helps users discover products, browse by category, save favorites, manage a bag, apply vouchers, and complete a checkout flow that supports both personal purchases and gifting.
+          </p>
+          <p>
+            The site is not just a product listing page. It combines storefront UX, cart management, wishlist behavior, shared bag links, account settings, orders, shipping addresses, reviews, and a dedicated admin panel into one cohesive commerce system.
+          </p>
+          <div class="note">
+            The current checkout flow is a polished demo flow. It behaves like a real handoff path and stores orders, but Paystack integration and final payment verification are not yet live.
+          </div>
+        </div>
+        <div>
+          <div class="feature-list">
+            <div class="feature">
+              <strong>Visual identity</strong>
+              Premium mobile-first UI, curated daily accent color, bold typography, and soft glass-like surfaces.
+            </div>
+            <div class="feature">
+              <strong>Commerce flow</strong>
+              Browse, wishlist, cart, checkout, sharing, and order confirmation.
+            </div>
+            <div class="feature">
+              <strong>Management layer</strong>
+              Admin can manage catalog data, vouchers, new arrivals, reviews, and analytics.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <p>Storefront experience</p>
+        <h2>Customer facing features</h2>
+      </div>
+      <div class="section-body">
+        <div class="card-grid">
+          <div class="card">
+            <h3>Home and discovery</h3>
+            <p>
+              The home page presents a curated fashion storefront with a promo carousel, new arrivals, category shortcuts, and product grids that respond to the chosen category.
+            </p>
+            <ul>
+              <li>Daily themed accent color to keep the page feeling alive.</li>
+              <li>Hero-style promotional carousel for featured offers.</li>
+              <li>Category tiles for fast browsing across dresses, two pieces, shoes, and bags.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Product browsing</h3>
+            <p>
+              Product cards are designed for quick scanning on mobile and desktop, while product detail pages provide deeper exploration and shopping actions.
+            </p>
+            <ul>
+              <li>Category-filtered product listings.</li>
+              <li>Product detail route for deeper product context.</li>
+              <li>Responsive cards with thumbnail-led design.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Wishlist</h3>
+            <p>
+              Customers can save items they like while browsing, which creates a low-friction "come back later" path and supports considered purchase behavior.
+            </p>
+            <ul>
+              <li>Favorite tracking for products.</li>
+              <li>Account-aware persistence through user data.</li>
+              <li>Useful for future retargeting and saved interest workflows.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pill-row">
+          <div class="pill"><span style="background: var(--accent)"></span>Wishlist</div>
+          <div class="pill"><span style="background: var(--accent-2)"></span>Cart</div>
+          <div class="pill"><span style="background: var(--accent-3)"></span>Shipping addresses</div>
+          <div class="pill"><span style="background: var(--warn)"></span>Promo codes</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <p>Cart and checkout</p>
+        <h2>Buying flow and payment handoff</h2>
+      </div>
+      <div class="section-body two-col">
+        <div>
+          <p>
+            The cart is built around a clean quantity-adjustment flow, with item removal, voucher application, subtotal and shipping math, and a visible order total. The checkout page then turns the bag into a more polished review experience.
+          </p>
+          <ul>
+            <li>Adjust item quantity directly in cart.</li>
+            <li>Remove items individually.</li>
+            <li>Apply and clear voucher codes.</li>
+            <li>See subtotal, discount, shipping, and total in real time.</li>
+          </ul>
+          <p>
+            Checkout supports a two-mode structure: "for myself" or "as a gift". Gift checkout includes recipient name and message fields. That gives the brand a more premium, more human purchase experience than a basic cart-to-payment handoff.
+          </p>
+          <p>
+            Shared bag links can be sent to another person so they can open the same basket and review exactly what they are paying for. The shared checkout preview includes product images, names, sizes, colors, quantities, and totals so the recipient understands the order before payment.
+          </p>
+        </div>
+        <div>
+          <div class="feature-list">
+            <div class="feature">
+              <strong>Guest checkout</strong>
+              Users can continue without signing in and still complete the demo payment flow.
+            </div>
+            <div class="feature">
+              <strong>Payment preview</strong>
+              The app simulates the payment handoff, so the client can see the intended end-to-end journey.
+            </div>
+            <div class="feature">
+              <strong>Order confirmation</strong>
+              Successful checkout records an order and leads into a success screen with the order summary.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <p>Account system</p>
+        <h2>User profile and order data</h2>
+      </div>
+      <div class="section-body">
+        <div class="card-grid">
+          <div class="card">
+            <h3>Authentication</h3>
+            <p>
+              Firebase Auth handles sign-in and registration. The app can distinguish logged-in users from guests and adjusts the checkout flow accordingly.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Profile data</h3>
+            <p>
+              User account documents store settings, cart contents, wishlist items, shipping addresses, rewards, reviews, and order history.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Persistence model</h3>
+            <p>
+              The account layer is designed so the storefront state survives across sessions and can be merged with guest cart data when needed.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <h3>What the account layer enables</h3>
+          <ul>
+            <li>Saved cart, saved wishlist, and saved shipping addresses.</li>
+            <li>Order history for both registered and guest flows.</li>
+            <li>Reward summary tracking for future loyalty features.</li>
+            <li>Review history and profile settings such as size and currency preferences.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <p>Admin panel</p>
+        <h2>Control features for the business team</h2>
+      </div>
+      <div class="section-body two-col">
+        <div>
+          <p>
+            The admin panel is a full content and commerce control surface. It is not limited to a few settings. It gives the business team direct control over product data, category metadata, vouchers, curated new arrivals, reviews, and analytics.
+          </p>
+          <p>
+            Access is protected by authentication and an admin custom claim. The panel can therefore be presented as a secure operations dashboard for catalog and customer experience management.
+          </p>
+          <div class="feature-list">
+            <div class="feature">
+              <strong>Overview</strong>
+              A dashboard summary of the catalog ecosystem and operational status.
+            </div>
+            <div class="feature">
+              <strong>Analytics</strong>
+              Visit and order summaries to help understand traffic and usage patterns.
+            </div>
+            <div class="feature">
+              <strong>Reviews</strong>
+              Moderation controls for removing reviews from the database.
+            </div>
+          </div>
+        </div>
+        <div>
+          <table class="tech-table">
+            <thead>
+              <tr>
+                <th>Admin area</th>
+                <th>What it manages</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Products</td>
+                <td>Create, edit, archive, and upload images for products. Fields include price, compare-at pricing, sizes, colors, tags, ratings, stock threshold, status, and image gallery.</td>
+              </tr>
+              <tr>
+                <td>Categories</td>
+                <td>Create and maintain category slugs, names, counts, images, emoji labels, and active state.</td>
+              </tr>
+              <tr>
+                <td>Vouchers</td>
+                <td>Manage percentage, fixed, and free-shipping vouchers with usage limits, active state, expiry, and metadata.</td>
+              </tr>
+              <tr>
+                <td>New arrivals</td>
+                <td>Edit the curated new-arrivals rotation that powers the featured discovery section.</td>
+              </tr>
+              <tr>
+                <td>Reviews</td>
+                <td>View and delete customer reviews from the live data set.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <p>Technical summary</p>
+        <h2>How the system is built</h2>
+      </div>
+      <div class="section-body">
+        <table class="tech-table">
+          <thead>
+            <tr>
+              <th>Layer</th>
+              <th>Implementation detail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Frontend</td>
+              <td>React with Vite and TypeScript, styled using Tailwind CSS. The UI is componentized into layouts, shared cards, pages, and reusable utility modules.</td>
+            </tr>
+            <tr>
+              <td>Routing</td>
+              <td>React Router powers the storefront, account, cart, checkout, and admin navigation paths.</td>
+            </tr>
+            <tr>
+              <td>Data storage</td>
+              <td>Firebase Firestore stores account data, orders, reviews, catalog documents, vouchers, and analytics records.</td>
+            </tr>
+            <tr>
+              <td>Authentication</td>
+              <td>Firebase Auth manages sign-in, registration, and access control to admin-only workflows.</td>
+            </tr>
+            <tr>
+              <td>Media</td>
+              <td>Firebase Storage is used for catalog image uploads from the admin panel.</td>
+            </tr>
+            <tr>
+              <td>Share preview</td>
+              <td>The project includes a server-rendered Open Graph preview path for shared product links, so external apps can render rich previews.</td>
+            </tr>
+            <tr>
+              <td>Responsive behavior</td>
+              <td>Mobile-first layout with sticky top elements, bottom navigation, floating cart access, and safe-area aware spacing.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout">
+          <h3>Technicalities worth mentioning in a pitch</h3>
+          <ul>
+            <li>The design system is consistent across storefront and admin surfaces, which gives the product a premium, intentional feel.</li>
+            <li>Cart and order data are normalized into reusable account documents, reducing inconsistencies across views.</li>
+            <li>The site already supports shared cart links and social preview metadata, which makes it easier to market products through messaging apps.</li>
+            <li>The admin panel is built for content operations, not just viewing data, so the client can run the store without needing a developer for every catalog change.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <p>Business value</p>
+        <h2>Why this matters to the client</h2>
+      </div>
+      <div class="section-body">
+        <div class="card-grid">
+          <div class="card">
+            <h3>Faster content updates</h3>
+            <p>
+              The client can update products, categories, and campaigns without rebuilding the site.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Better conversion support</h3>
+            <p>
+              The shopping bag, shared cart flow, and gift checkout make it easier to move a customer from browsing to purchase.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Premium perception</h3>
+            <p>
+              The interface feels curated and brand-led, which helps the storefront present as a serious fashion label rather than a basic product list.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      Temporary pitch document. Delete this file after you export the information you need.
+    </div>
+  </div>
+</body>
+</html>
