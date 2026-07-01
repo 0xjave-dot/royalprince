@@ -5,13 +5,13 @@ import { getStorage } from 'firebase/storage';
 
 // Firebase configuration (replace with your own values if needed)
 const firebaseConfig = {
-  apiKey: 'AIzaSyBbULfk2c-qWq8ymlQeW6NbAb2AdJqjSwU',
-  authDomain: 'fabr-b9e7f.firebaseapp.com',
-  projectId: 'fabr-b9e7f',
-  storageBucket: 'fabr-b9e7f.firebasestorage.app',
-  messagingSenderId: '615789646995',
-  appId: '1:615789646995:web:9d786684a8268284102966',
-  measurementId: 'G-ECQ6JHJYN0',
+  apiKey: 'AIzaSyBT4F8QKgRO-FEpWv3gUjFaJLJvpY-eNnU',
+  authDomain: 'fashionp-cc2ee.firebaseapp.com',
+  projectId: 'fashionp-cc2ee',
+  storageBucket: 'fashionp-cc2ee.firebasestorage.app',
+  messagingSenderId: '743241429640',
+  appId: '1:743241429640:web:009d67e21adcabe04b653d',
+  measurementId: 'G-L2JLCV9DE1',
 };
 
 // Initialize Firebase app

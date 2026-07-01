@@ -6,7 +6,7 @@ import { useToast } from "../../context/ToastContext";
 import AdminPanel from "./AdminPanel";
 import { brandName } from "../../data/brand";
 
-const ADMIN_PANEL_PASSWORD = "Fabadmin26!";
+const ADMIN_PANEL_PASSWORD = "Royalprince26!";
 const ADMIN_UNLOCK_KEY = "royal-prince-admin-unlocked";
 
 export default function AdminGate() {

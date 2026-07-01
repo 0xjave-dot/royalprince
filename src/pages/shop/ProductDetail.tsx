@@ -2,7 +2,6 @@ import { useState, useMemo, useEffect } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { Heart, ShoppingBag, Star, Share2, Plus, Minus, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { PageHeader } from "../../components/layout/PageHeader";
-import { BackButton } from "../../components/layout/BackButton";
 import { products } from "../../data/products";
 import { useCart } from "../../context/CartContext";
 import { useWishlist } from "../../context/WishlistContext";
@@ -200,7 +199,14 @@ export default function ProductDetail() {
       {/* Product Header */}
       <PageHeader
         title={isSharedPreview ? "Shared Preview" : "Product Detail"}
-        left={<BackButton />}
+        left={
+          <button
+            onClick={() => navigate(-1)}
+            className="font-display font-semibold text-[15px] text-dark hover:opacity-80 active:scale-95 transition-all py-1"
+          >
+            Back
+          </button>
+        }
         right={
           <div className="flex items-center gap-2">
             <button
