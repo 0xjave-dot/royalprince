@@ -75,6 +75,8 @@ export default function Home() {
       return byMode.filter((p) => p.category === "shoes");
     } else if (activeCategory === "Accessories") {
       return byMode.filter((p) => p.category === "bags");
+    } else if (activeCategory === "men-accessories") {
+      return byMode.filter((p) => p.category === "men-accessories");
     } else if (activeCategory === "casual-clothes") {
       return byMode.filter((p) => p.category === "casual-clothes");
     } else if (activeCategory === "men-tops") {

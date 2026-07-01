@@ -64,6 +64,8 @@ export default function CategoryList() {
       list = list.filter((p) => p.category === "shoes");
     } else if (activeCat === "Accessories") {
       list = list.filter((p) => p.category === "bags");
+    } else if (activeCat === "men-accessories") {
+      list = list.filter((p) => p.category === "men-accessories");
     } else if (activeCat === "casual-clothes") {
       list = list.filter((p) => p.category === "casual-clothes");
     } else if (activeCat && activeCat !== "all") {

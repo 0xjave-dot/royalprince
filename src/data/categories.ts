@@ -61,7 +61,7 @@ export const menCategories: Category[] = [
     slug: "men-accessories",
     itemCount: 70,
     emoji: "🧢",
-    image: "https://i.ibb.co/7SJ3cYV/men-accessories.png",
+    image: "https://static.thenounproject.com/png/2373796-200.png",
     group: "men",
   },
 ];

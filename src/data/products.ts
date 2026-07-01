@@ -818,6 +818,7 @@ const twoPieceImage = "https://i.ibb.co/G3CN15v9/Gemini-Generated-Image-g4v7uyg4
 const shoesImage = "https://m.media-amazon.com/images/I/61C3dJuLiQL._AC_UF894,1000_QL80_.jpg";
 const bagsImage = "https://d21d281c1yd2en.cloudfront.net/media/product_images/6085a837-778d-4e08-9862-12f68a32ba09.jpeg";
 const casualImage = "https://tove-studio.com/cdn/shop/files/MarloJeanIndigo_TOVE.jpg?v=1738755608";
+const menAccessoriesImage = "https://i5.walmartimages.com/seo/POEDAGAR-Top-Brand-Luxury-Mens-Watches-Luminous-Waterproof-Stainless-Steel-Watch-Men-Date-Calendar-Business-Quartz-Wristwatch_d069966a-9085-4912-889a-d205f02c51e3.672da074b006c70bf69bc2cf54dd4f76.jpeg";
 
 // Mutate product images to match the new image assets specified by the user
 products.forEach((p) => {
@@ -829,6 +830,8 @@ products.forEach((p) => {
     p.images = [shoesImage];
   } else if (p.category === "bags") {
     p.images = [bagsImage];
+  } else if (p.category === "men-accessories") {
+    p.images = [menAccessoriesImage];
   } else if (p.category === "casual-clothes") {
     p.images = [casualImage];
   }
@@ -925,6 +928,27 @@ fillTo70(
     reviewCount: 20 + (i * 6) % 180,
     colorTag: "#202020",
     tags: i % 5 === 0 ? ["Exclusive"] : ["Top Rated"]
+  })
+);
+
+// Fill men’s accessories
+fillTo70(
+  (p) => p.category === "men-accessories",
+  (i) => ({
+    id: `men-accessories-gen-${i}`,
+    name: "premium men's accessory",
+    description: `A luxury men’s accessory designed with precision detailing, polished finishes, and versatile styling for both daytime and evening looks.`,
+    price: 52000.00 + (i * 430) % 18000,
+    compareAtPrice: 72000.00 + (i * 430) % 18000,
+    category: "men-accessories",
+    images: [menAccessoriesImage],
+    colors: ["#202020", "#C0C0C0"],
+    sizes: ["One Size"],
+    rating: parseFloat((4.5 + (i % 5) * 0.1).toFixed(1)),
+    reviewCount: 18 + (i * 6) % 150,
+    colorTag: "#202020",
+    tags: i % 4 === 0 ? ["Luxury"] : ["Best Seller"],
+    audience: "men"
   })
 );
 
@@ -1081,7 +1105,8 @@ const approvedProducts = products.filter((p) => {
     p.category === "casual-clothes" ||
     p.category === "men-tops" ||
     p.category === "men-pants" ||
-    p.category === "men-shoes"
+    p.category === "men-shoes" ||
+    p.category === "men-accessories"
   );
 });
 
