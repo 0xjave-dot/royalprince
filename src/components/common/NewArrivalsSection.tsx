@@ -29,24 +29,24 @@ export function NewArrivalsSection() {
 
   return (
     <div className="w-full" id="new-arrivals-section">
-      <div className="mb-3 flex items-end justify-between gap-3">
+      <div className="mb-2.5 flex items-center justify-between gap-2.5">
         <div className="min-w-0">
-          <p className="font-display text-[10px] font-black uppercase tracking-[0.24em] text-gray2">
+          <p className="font-display text-[9px] font-black uppercase tracking-[0.24em] text-gray2">
             New arrivals
           </p>
-          <h3 className="mt-1 truncate font-display text-[18px] font-black uppercase tracking-tight text-dark">
+          <h3 className="mt-1 truncate font-display text-[16px] font-black uppercase tracking-tight text-dark">
             {todayEntry.title}
           </h3>
         </div>
-        <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-blue bg-blue-light/30 border-blue/20">
+        <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.18em] text-blue bg-blue-light/30 border-blue/20">
           <span className="h-2 w-2 rounded-full bg-blue" />
           
         </span>
       </div>
 
-      <div className="flex gap-3 overflow-x-auto no-scrollbar pb-2 pt-0.5 items-stretch">
+      <div className="flex gap-2 overflow-x-auto no-scrollbar pb-2 pt-0.5 items-stretch">
         {resolvedProducts.map((prod) => (
-          <div key={prod.id} className="w-[155px] md:w-[210px] flex-shrink-0 flex">
+          <div key={prod.id} className="w-[130px] md:w-[180px] flex-shrink-0 flex">
             <ProductCard product={prod} />
           </div>
         ))}
@@ -58,7 +58,7 @@ export function NewArrivalsSection() {
             background: "linear-gradient(180deg, rgba(31,63,139,0.08) 0%, rgba(255,255,255,0.92) 74%)",
             boxShadow: `0 14px 30px ${rgbaFromHex("#1f3f8b", 0.08)}`,
           }}
-          className="w-[155px] md:w-[210px] flex-shrink-0 flex flex-col justify-between items-start text-left p-4 border border-dashed rounded-[20px] cursor-pointer hover:bg-opacity-10 active:scale-[0.97] transition-all group"
+          className="w-[130px] md:w-[180px] flex-shrink-0 flex flex-col justify-between items-start text-left p-3 border border-dashed rounded-[20px] cursor-pointer hover:bg-opacity-10 active:scale-[0.97] transition-all group"
         >
           <div className="flex items-center gap-2">
             <div
@@ -78,7 +78,7 @@ export function NewArrivalsSection() {
             </div>
           </div>
 
-          <span className="mt-4 inline-flex rounded-full px-2.5 py-1 font-display text-[11px] font-extrabold uppercase tracking-wide text-blue bg-blue-light/30">
+          <span className="mt-3 inline-flex rounded-full px-2.5 py-1 font-display text-[9px] font-extrabold uppercase tracking-wide text-blue bg-blue-light/30">
             Shop now
           </span>
         </div>

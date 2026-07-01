@@ -49,7 +49,7 @@ export function DailyPromoCarousel() {
 
   return (
     <div
-      className="relative overflow-hidden rounded-[24px] min-h-[220px] sm:min-h-[250px] cursor-pointer select-none border border-black/5"
+      className="relative overflow-hidden rounded-[24px] min-h-[150px] sm:min-h-[180px] cursor-pointer select-none border border-black/5"
       style={{
         background: theme.shellBackground,
         boxShadow: `0 14px 34px ${rgbaFromHex(theme.accent, 0.14)}`,
@@ -68,7 +68,7 @@ export function DailyPromoCarousel() {
         style={{ backgroundColor: rgbaFromHex(theme.accent, 0.22) }}
       />
 
-      <div key={activeSlide} className="relative h-full min-h-[220px] sm:min-h-[250px] animate-fade-up-enter">
+      <div key={activeSlide} className="relative h-full min-h-[150px] sm:min-h-[180px] animate-fade-up-enter">
         <img
           src={current.images[0]}
           alt={current.name}
@@ -91,7 +91,7 @@ export function DailyPromoCarousel() {
             
           </p>
           <p className="mt-1 font-display text-[18px] font-black uppercase tracking-tight text-dark leading-none">
-            Discover fresh arrivals
+            
           </p>
         </div>
       </div>
